@@ -15,6 +15,7 @@
             if($user->getPass() === $pass){
                 $_SESSION["user"] = $user;
                 $_SESSION["connected"] = true;
+                header("Location: ../index.php");
             }
             else{
                 echo "Mauvais MDP";

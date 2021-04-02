@@ -16,7 +16,7 @@ class User
      * @param string|null $pass
      * @param string|null $mail
      */
-    public function __construct(?int $id, ?string $name, ?string $pass, ?string $mail, ?array $channel)
+    public function __construct(int $id = null, string $name= null, string $pass= null, string $mail= null, array $channel= null)
     {
         $this->id = $id;
         $this->name = $name;
