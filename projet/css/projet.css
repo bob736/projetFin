@@ -1,0 +1,35 @@
+#projet {
+    width: 20vw;
+    height: 100%;
+    border-right: 1px solid black;
+    position: relative;
+    left: 0;
+    margin: 0;
+    border-bottom: 1px solid black;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+#projet::-webkit-scrollbar{
+    display: none;
+}
+
+#projet ul {
+    list-style: none;
+}
+
+#projet li {
+    margin-left: 5%;
+    margin-top: 5%;
+}
+
+#projet a {
+    text-decoration: none;
+    color: black;
+}
+
+.projetCont{
+    border-bottom: 1px solid black;
+    margin-bottom: 2%;
+    margin-left: 2%;
+}

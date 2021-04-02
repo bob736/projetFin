@@ -1,0 +1,20 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    font-size : 62.5%;
+}
+
+#cont {
+    width:100vw;
+    height: 90vh;
+}
+
+#cont {
+    display : flex;
+    flex-direction: row;
+    list-style : none;
+}
