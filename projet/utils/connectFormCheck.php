@@ -17,8 +17,11 @@
                 $_SESSION["connected"] = true;
             }
             else{
-                echo "Mauvais identifiant";
+                echo "Mauvais MDP";
             }
+        }
+        else{
+            echo "Mauvais Mail";
         }
     }
 ?>
