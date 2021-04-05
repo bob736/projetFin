@@ -95,32 +95,10 @@
     </li>
     <li id="online">
         <ul>
-            <li>
-                <div class="profile">
-                    <span id="name">Name</span>
-                    <div id="online-detector">X</div>
-                </div>
-            </li>
-            <li>
-                <div class="profile">
-                    <span id="name">Name</span>
-                    <div id="online-detector">X</div>
-                </div>
-            </li>
-            <li>
-                <div class="profile">
-                    <span id="name">Name</span>
-                    <div id="online-detector">X</div>
-                </div>
-            </li>
-            <li>
-                <div class="profile">
-                    <span id="name">Name</span>
-                    <div id="online-detector">X</div>
-                </div>
-            </li>
+            <?php require_once("./parts/connected.php") ?>
         </ul>
     </li>
 </ul>
 </body>
+<script src="./js/infoClick.js"></script>
 </html>

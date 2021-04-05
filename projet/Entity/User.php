@@ -7,7 +7,7 @@ class User
     private ?string $name;
     private ?string $pass;
     private ?string $mail;
-    private ?array $channel;
+    private ?string $lien;
 
     /**
      * User constructor.
@@ -16,31 +16,32 @@ class User
      * @param string|null $pass
      * @param string|null $mail
      */
-    public function __construct(int $id = null, string $name= null, string $pass= null, string $mail= null, array $channel= null)
+    public function __construct(int $id = null, string $name= null, string $pass= null, string $mail= null, string $lien = null)
     {
         $this->id = $id;
         $this->name = $name;
         $this->pass = $pass;
         $this->mail = $mail;
-        $this->channel = $channel;
+        $this->lien = $lien;
     }
 
     /**
-     * @return array|null
+     * @return string|null
      */
-    public function getChannel(): ?array
+    public function getLien(): ?string
     {
-        return $this->channel;
+        return $this->lien;
     }
 
     /**
-     * @param array|null $channel
+     * @param string|null $lien
      */
-    public function setChannel(?array $channel): User
+    public function setLien(?string $lien): User
     {
-        $this->channel = $channel;
+        $this->lien = $lien;
         return $this;
     }
+
 
     /**
      * @return int|null
