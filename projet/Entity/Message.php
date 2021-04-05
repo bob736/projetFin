@@ -3,6 +3,7 @@
 
 class Message
 {
+    private ?int $id;
     private ?int $idUser1;
     private ?int $idUser2;
     private ?string $text;
@@ -13,11 +14,30 @@ class Message
      * @param int|null $idUser2
      * @param string|null $text
      */
-    public function __construct(int $idUser1 = null, int $idUser2 = null, string $text = null)
+    public function __construct(int $id= null,int $idUser1 = null, int $idUser2 = null, string $text = null)
     {
+        $this->id = $id;
         $this->idUser1 = $idUser1;
         $this->idUser2 = $idUser2;
         $this->text = $text;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int|null $id
+     * @return $this
+     */
+    public function setId(?int $id): Message
+    {
+        $this->id = $id;
+        return $this;
     }
 
     /**

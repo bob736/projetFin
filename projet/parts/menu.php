@@ -1,5 +1,3 @@
-
-
 <header>
     <div id="menu">
         <ul>
