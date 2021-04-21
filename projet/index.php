@@ -100,5 +100,7 @@
     </li>
 </ul>
 </body>
-<script src="./js/infoClick.js"></script>
+<script src="js/utils/infoClick.js"></script>
+<script src="js/classes/ajax.js" type="module"></script>
+<script src="js/utils/getPrivateMessage.js" type="module"></script>
 </html>

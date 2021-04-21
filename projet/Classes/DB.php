@@ -4,9 +4,9 @@
 class DB
 {
     private string $host = "localhost";
-    private string $db = "projet";
-    private string $user = "root";
-    private string $password = "";
+    private string $db = "amrq8237_disgit";
+    private string $user = "amrq8237";
+    private string $password = "88*NPu!!X2qu";
 
     private static ?PDO $dbInstance = null;
 

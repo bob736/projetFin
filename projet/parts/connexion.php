@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="formConnexion">
-        <form action="./connectFormCheck.php" method="post">
+        <form action="../utils/connectFormCheck.php" method="post">
             <div>
                 <input type="email" placeholder="email" name="mail">
             </div>

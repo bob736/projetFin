@@ -7,10 +7,10 @@
             header("Location: ../index.php");
         }
         else{
-            header("Location: connexion.php");
+            header("Location: ../parts/connexion.php");
         }
     }
     else{
-        header("Location: connexion.php");
+        header("Location: ../parts/connexion.php");
     }
 ?>
