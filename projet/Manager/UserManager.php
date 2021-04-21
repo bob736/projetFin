@@ -1,17 +1,12 @@
 <?php
 
+namespace App\Manager;
+use App\Traits\Manager;
+use App\Entity\User;
+
 class UserManager
 {
-    private ?PDO $db;
-
-    /**
-     * ArticleManager constructor.
-     */
-    public function __construct()
-    {
-        $this->db = DB::getInstance();
-    }
-
+    use Manager;
 
     /**
      * Return the first User where mail = $mail

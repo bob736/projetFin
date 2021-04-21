@@ -1,9 +1,5 @@
 <?php
-    require_once("function.php");
-
-    require_once("../Classes/DB.php");
-    require_once("../Entity/User.php");
-    require_once("../Manager/UserManager.php");
+    include "../include/userRequire_once.php";
 
     session_start();
     if(isset($_POST, $_POST["mail"], $_POST["pass"])){

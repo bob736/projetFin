@@ -1,9 +1,5 @@
 <?php
-require("../Classes/DB.php");
-require("../Entity/Message.php");
-require("../Manager/MessageManager.php");
-
-require("../Entity/User.php");
+include "../include/userRequire_once.php";
 
 session_start();
 

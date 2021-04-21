@@ -1,12 +1,12 @@
-import {Req} from "../classes/ajax.js";
+import {Request} from "../classes/Request.js";
 
-const privateMessage = new Req("../../api/privateMessage/get.php");
+const privateMessageReq = new Request("privateMessage");
 
-function log(data){
-    console.log("ok")
-    console.log(data);
+function timeOutRecurePrivateMessage(){
+    setTimeout(function(){
+        privateMessageReq.get();
+        timeOutRecurePrivateMessage();
+    },1000)
 }
 
-privateMessage.setCallback(log);
-
-privateMessage.get();
+timeOutRecurePrivateMessage();

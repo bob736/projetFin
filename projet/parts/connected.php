@@ -5,6 +5,8 @@ require_once("./Classes/DB.php");
 require_once("./Entity/User.php");
 require_once("./Manager/UserManager.php");
 
+use App\Manager\UserManager;
+
 $userManager = new UserManager();
 $users = $userManager->getUsers();
 

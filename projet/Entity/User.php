@@ -1,9 +1,13 @@
 <?php
 
+namespace App\Entity;
+
+use App\Traits\Entity;
 
 class User
 {
-    private ?int $id;
+    use Entity;
+
     private ?string $name;
     private ?string $pass;
     private ?string $mail;
@@ -42,23 +46,6 @@ class User
         return $this;
     }
 
-
-    /**
-     * @return int|null
-     */
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int|null $id
-     */
-    public function setId(?int $id): User
-    {
-        $this->id = $id;
-        return $this;
-    }
 
     /**
      * @return string|null

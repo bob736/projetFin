@@ -1,9 +1,7 @@
 <?php
-    require_once("./utils/function.php");
+    include "./include/userRequire_once.php";
 
-    require_once("./Classes/DB.php");
-    require_once("./Entity/User.php");
-    require_once("./Manager/UserManager.php");
+    use App\Manager\UserManager;
 
     $userManager = new UserManager();
 
@@ -101,6 +99,8 @@
 </ul>
 </body>
 <script src="js/utils/infoClick.js"></script>
-<script src="js/classes/ajax.js" type="module"></script>
+<script src="js/classes/Request.js" type="module"></script>
+<script src="js/classes/PrivateMessageSingle.js" type="module"></script>
+<script src="js/classes/PrivateMessageAll.js" type="module"></script>
 <script src="js/utils/getPrivateMessage.js" type="module"></script>
 </html>
