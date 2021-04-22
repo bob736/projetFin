@@ -8,59 +8,82 @@ class PrivateMessage
 {
     use Entity;
 
-    private ?int $user1_id;
-    private ?int $user2_id;
+    private ?int $userid;
+    private ?string $username;
     private ?string $text;
     private ?string $date;
+    private ?bool $sent;
 
     /**
-     * PrivateMessageAll constructor.
+     * PrivateMessage constructor.
      * @param int|null $id
      * @param int|null $user1_id
      * @param int|null $user2_id
      * @param string|null $text
      * @param string|null $date
+     * @param string|null $user1_name
+     * @param string|null $user2_name
+     * @param bool|null $sent
      */
-    public function __construct(int $id = null, int $user1_id = null, int $user2_id = null, string $text = null, string $date = null)
+    public function __construct(int $id = null, int $userid = null, string $text = null, string $date = null, string $username = null, bool $sent = false)
     {
         $this->id = $id;
-        $this->user1_id = $user1_id;
-        $this->user2_id = $user2_id;
+        $this->userid = $userid;
         $this->text = $text;
         $this->date = $date;
-    }
-//
-    /**
-     * @return int|null
-     */
-    public function getUser1Id(): ?int
-    {
-        return $this->user1_id;
+        $this->username = $username;
+        $this->sent = $sent;
     }
 
     /**
-     * @param int|null $user1_id
+     * @return bool|null
      */
-    public function setUser1Id(?int $user1_id): PrivateMessage
+    public function getSent(): ?bool
     {
-        $this->user1_id = $user1_id;
+        return $this->sent;
+    }
+
+    /**
+     * @param bool|null $sent
+     */
+    public function setSent(?bool $sent): PrivateMessage
+    {
+        $this->sent = $sent;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUsername(): ?string
+    {
+        return $this->user1_name;
+    }
+
+    /**
+     * @param string|null $user1_name
+     */
+    public function setUsername(?string $user1_name): PrivateMessage
+    {
+        $this->user1_name = $user1_name;
         return $this;
     }
 
     /**
      * @return int|null
      */
-    public function getUser2Id(): ?int
+    public function getUserId(): ?int
     {
-        return $this->user2_id;
+        return $this->userid;
     }
 
     /**
-     * @param int|null $user2_id
+     * @param int|null $userid
+     * @return $this
      */
-    public function setUser2Id(?int $user2_id): PrivateMessage
+    public function setUserId(?int $userid): PrivateMessage
     {
-        $this->user2_id = $user2_id;
+        $this->userid = $userid;
         return $this;
     }
 

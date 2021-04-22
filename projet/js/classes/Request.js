@@ -17,8 +17,8 @@ Request.prototype.send = function (){
     this.xhr.send(this.toJson(this.data));
 }
 
-Request.prototype.get = function () {
-    this.xhr.open("GET", this.link);
+Request.prototype.get = function (user2) {
+    this.xhr.open("GET", this.link + "?user=" + user2);
     this.xhr.setRequestHeader('Content-Type', 'application/json');
     this.xhr.send();
     this.xhr.onload = () => {

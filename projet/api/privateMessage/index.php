@@ -16,23 +16,35 @@ $requestType = $_SERVER['REQUEST_METHOD'];
 
 switch($requestType) {
     case 'GET':
-        echo getPrivateMessage(2,$messageManager);
+        echo getPrivateMessage(intval($_GET["user"]),$messageManager);
+        break;
+    case 'POST':
         break;
     default:
         break;
 }
 
+/**
+ * @param $id_user2
+ * @param $messageManager
+ * @return false|string
+ */
 function getPrivateMessage($id_user2, $messageManager){
     $messages = $messageManager->getMessage($id_user2);
     $response = [];
     foreach($messages as $content){
+        $content
+            ->setDate(date('l jS \of F Y h:i:s A'));
         $response[] = [
             "message" => $content->getText(),
             "date" => $content->getDate(),
+            "sent" => $content->getSent(),
+            "pseudo" => $content->getUsername(),
         ];
     }
     return json_encode($response);
 }
+
 
 
 exit;

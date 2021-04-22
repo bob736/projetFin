@@ -1,5 +1,5 @@
 <?php function info($user){?>
     <div class="infoClick">
-        <a href="./parts/sendMessage.php?user=<?php echo $user->getId()?>">Message</a>
+        <a class="infoClickLink" data-id="<? echo $user->getId() ?>" href="#">Message</a>
     </div><?php
 } ?>
