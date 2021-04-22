@@ -8,6 +8,7 @@ let PrivateMessageAll = function(){
 }
 
 PrivateMessageAll.prototype.appendToDOM = function(data){
+    console.log(data);
     for(let message of data){
         this.child.push(new PrivateMessageSingle(message));
     }

@@ -1,6 +1,8 @@
 <?php
     include "../include/userRequire_once.php";
 
+    use App\Manager\UserManager;
+
     session_start();
     if(isset($_POST, $_POST["mail"], $_POST["pass"])){
         $userManager = new UserManager();
