@@ -6,9 +6,10 @@ let PrivateMessageSingle = function(data){
 
 PrivateMessageSingle.prototype.setContent = function(){
     this.div.innerHTML = `
-        <div>${this.data.message}</div>
+        <div class="privateMessageContent">${this.data.message}</div>
     `;
 
 }
 
+//
 export {PrivateMessageSingle};

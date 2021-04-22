@@ -35,6 +35,9 @@ Request.prototype.setData = function(data){
     this.data = data;
 }
 
+Request.prototype.resetData = function(){
+    this.data = null;
+}
 
 
 export {Request};
