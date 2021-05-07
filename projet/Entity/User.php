@@ -12,6 +12,8 @@ class User
     private ?string $pass;
     private ?string $mail;
     private ?string $lien;
+    private ?string $icon;
+    private ?string $bio;
 
     /**
      * User constructor.
@@ -20,14 +22,53 @@ class User
      * @param string|null $pass
      * @param string|null $mail
      */
-    public function __construct(int $id = null, string $name= null, string $pass= null, string $mail= null, string $lien = null)
+    public function __construct(int $id = null, string $name= null, string $pass= null, string $mail= null, string $lien = null, string $icon = null, string $bio = null)
     {
         $this->id = $id;
         $this->name = $name;
         $this->pass = $pass;
         $this->mail = $mail;
         $this->lien = $lien;
+        $this->icon = $icon;
+        $this->bio = $bio;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getBio(): ?string
+    {
+        return $this->bio;
+    }
+
+    /**
+     * @param string|null $bio
+     */
+    public function setBio(?string $bio): User
+    {
+        $this->bio = $bio;
+        return $this;
+    }
+
+
+    /**
+     * @return string|null
+     */
+    public function getIcon(): ?string
+    {
+        return $this->icon;
+    }
+
+    /**
+     * @param string|null $icon
+     */
+    public function setIcon(?string $icon): User
+    {
+        $this->icon = $icon;
+        return $this;
+    }
+
+
 
     /**
      * @return string|null

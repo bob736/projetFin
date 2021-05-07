@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Manager;
-use App\Traits\Manager;
+use App\Traits\GlobalManager;
 
 class MessageManager
 
 {
-    use Manager;
+    use GlobalManager;
 
     public function sendMessage(Message $message){
         $conn = $this->db->prepare("INSERT INTO privatemessage (user1_id, user2_id, message) VALUES (:user1, :user2, :message)");

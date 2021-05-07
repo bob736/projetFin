@@ -1,7 +1,10 @@
 #menu {
     width: 100vw;
-    height: 10vh;
+    height: 5vh;
     font-size: 1.7rem;
+    background-color: #616A6B;
+    color: #F2F4F4;
+
 }
 
 #menu ul {
@@ -13,9 +16,15 @@
     justify-content: space-around;
     align-items: center;
     border-bottom: 1px solid black;
+    position: relative;
+    z-index: 2;
+    background-color: #616A6B;
 }
 
-
+#menu a{
+    color: #F2F4F4;
+    text-decoration: none;
+}
 
 
 

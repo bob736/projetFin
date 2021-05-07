@@ -1,0 +1,96 @@
+#profilePage{
+    position: absolute;
+    top: 10vh;
+    height: 60vh;
+    width: 30vw;
+    z-index: 10;
+    margin-left: 15vw;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+#userProfileTop{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: #ff7e5f;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #feb47b, #ff7e5f);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #feb47b, #ff7e5f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    overflow: hidden;
+}
+
+#userProfileTop div{
+    width: 100%;
+    text-align: center;
+}
+
+#userProfileBot{
+    background-color: #dcdcdc;
+    height: 50%;
+    width: 100%;
+}
+
+#userIcone{
+    position: relative;
+    width: 100%;
+    height: 10%;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#userIcone img{
+    padding: 5%;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.profileSeparation {
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+#userModif {
+    position: absolute;
+    top: 0;
+    padding: 5%;
+    font-size: 2rem;
+}
+
+#userBio {
+    width: 70% !important;
+    display: inline-block;
+}
+
+#userProfileTop h2{
+    width: 100%;
+    text-align: center;
+}
+
+#userFollow{
+    font-size: 2rem;
+    border-radius: 25px 25px 25px 25px;
+    background-color: white;
+    color: coral;
+    width: 50% !important;
+}
+
+#userFollow:hover{
+    color: darkcyan;
+    cursor: pointer;
+}
+
+.closeProfile {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 2%;
+    font-size: 2rem;
+    z-index: 10;
+}

@@ -2,10 +2,10 @@
 
 namespace App\Traits;
 
-use App\Classes\DB;
 use PDO;
+use App\Classes\DB;
 
-trait Manager
+trait GlobalManager
 {
     private ?PDO $db;
 

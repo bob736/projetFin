@@ -12,8 +12,8 @@ $users = $userManager->getUsers();
 
 
 foreach($users as $user){
-    if(isset($_SESSION, $_SESSION["user"])){
-        if($_SESSION["user"]->getId() !== $user->getId()){?>
+    if($connected){
+        if($_SESSION["user1_id"] !== $user->getId()){?>
             <li>
                 <div class="profile">
                     <span id="name"><?php echo $user->getName() ?></span>

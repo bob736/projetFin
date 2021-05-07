@@ -7,9 +7,11 @@
 
     session_start();
     if(isset($_SESSION["connected"]) && $_SESSION["connected"] === true){
+        echo $_SESSION["user1_id"];
         $connected = true;
     }
     else{
+        echo "not ok";
         $connected = false;
     }
 ?>
@@ -74,21 +76,19 @@
         </div>
     </li>
     <li id="categories"></li>
-    <li id="data">
-        <div id="chat">
-            <div id="showMessage"></div>
-            <div id="sendMessage">
-                <div id="sendMessageBox">
-                    <div id="sendMessageForm">
-                        <form>
-                            <?php if($connected){?>
-                                <input type="text" placeholder="Envoyer un message sur le channel #......">
-                                <input type="submit"><?php
-                            }else{?>
-                                <input disabled="disabled" type="text" placeholder="Vous devez etre connecté pour envoyer un message"><?php
-                            }?>
-                        </form>
-                    </div>
+    <li id="chat">
+        <div id="showMessage"></div>
+        <div id="sendMessage">
+            <div id="sendMessageBox">
+                <div id="sendMessageForm">
+                    <form>
+                        <?php if($connected){?>
+                            <input type="text" placeholder="Envoyer un message sur le channel #......">
+                            <input type="submit"><?php
+                        }else{?>
+                            <input disabled="disabled" type="text" placeholder="Vous devez etre connecté pour envoyer un message"><?php
+                        }?>
+                    </form>
                 </div>
             </div>
         </div>
@@ -101,13 +101,9 @@
 </ul>
 </body>
 <script src="https://kit.fontawesome.com/78e483bd6f.js" crossorigin="anonymous"></script>
-<script src="js/utils/fonctionUtils.js" type="module"></script>
 <script src="js/utils/infoClick.js"></script>
-<script src="js/classes/Profile.js" type="module"></script>
-<script src="js/utils/profileClick.js" type="module"></script>
 <script src="js/classes/Request.js" type="module"></script>
 <script src="js/classes/PrivateMessageSingle.js" type="module"></script>
 <script src="js/classes/PrivateMessageAll.js" type="module"></script>
 <script src="js/utils/privateMessage.js" type="module"></script>
-
 </html>

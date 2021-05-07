@@ -7,8 +7,6 @@ use App\Manager\PrivateMessageManager;
 $userManager = new UserManager();
 $messageManager = new PrivateMessageManager();
 
-$_SESSION["user1_id"] = 1;
-
 header('Content-Type: application/json');
 
 $requestType = $_SERVER['REQUEST_METHOD'];
@@ -18,23 +16,20 @@ switch($requestType) {
     case 'GET':
         echo getPrivateMessage(intval($_GET["user"]),$messageManager);
         break;
-    case 'POST':
-        break;
     default:
         break;
 }
 
 /**
+ * Return json object of an array of PrivateMessage
  * @param $id_user2
- * @param $messageManager
+ * @param PrivateMessageManager $messageManager
  * @return false|string
  */
-function getPrivateMessage($id_user2, $messageManager){
+function getPrivateMessage($id_user2, PrivateMessageManager $messageManager){
     $messages = $messageManager->getMessage($id_user2);
     $response = [];
     foreach($messages as $content){
-        $content
-            ->setDate(date('l jS \of F Y h:i:s A'));
         $response[] = [
             "message" => $content->getText(),
             "date" => $content->getDate(),

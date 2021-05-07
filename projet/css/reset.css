@@ -10,11 +10,14 @@ html{
 
 #cont {
     width:100vw;
-    height: 90vh;
-}
-
-#cont {
+    height: 95vh;
     display : flex;
     flex-direction: row;
     list-style : none;
+    color: #EAEDED;
+}
+
+#data {
+    height:100%;
+    width:60vw;
 }

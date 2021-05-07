@@ -1,39 +1,45 @@
 .singleMessageDiv{
-    margin-top: 1%;
+    position: relative;
+    top: 0;
     width:100%;
+    height: min-content;
     font-size: 2rem;
+    background-color: #AAB7B8;
+    padding: 2%;
+    margin-top: 2vh;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
-.singleMessageDiv .sent{
-    text-align: right;
-}
 
 .singleMessageDiv .data .date{
     font-size: 1rem;
 }
 
-.singleMessageDiv .sent .text{
-    margin-right: 5%;
-}
-
-.singleMessageDiv .receive .text{
-    margin-left: 5%;
-}
-
 .singleMessageDiv .text{
+    margin-left: 5%;
     margin-top: 1%;
+    color: #808B96;
 
 }
 
-.separation {
+#sendTo {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    z-index: 2;
+    text-align: center;
+    font-size: 2rem;
+    height: 5vh;
+    background-color:#AEB6BF;
+    color: darkorange;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
-.separation .barre{
-    width: 50%;
-    height: 1px;
-    background-color: red;
+#closeButton{
+    z-index: 2;
 }

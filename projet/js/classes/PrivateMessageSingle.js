@@ -11,6 +11,7 @@ PrivateMessageSingle.prototype.setClasse = function(){
     }
 }
 
+//set Content of single private message
 PrivateMessageSingle.prototype.setContent = function(){
     this.setClasse();
     this.div.innerHTML = `
@@ -20,9 +21,6 @@ PrivateMessageSingle.prototype.setContent = function(){
             <div class="date">${this.data.date}</div>
         </div>
         <div class="text">${this.data.message}</div>
-    </div>
-    <div class="separation">
-        <div class="barre"></div>
     </div>
     `;
 }

@@ -5,9 +5,8 @@
     position: relative;
     top: 0;
     left: 0;
-    overflow: scroll;
     overflow-x: hidden;
-    background-color: white;
+    background-color: #616A6B;
 
 }
 
@@ -18,23 +17,25 @@
 #sendMessage{
     position: absolute;
     bottom: 0;
-    height: 10vh;
+    height: 10%;
     width: 100%;
-    border-top: 1px solid red;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 
 }
 
 #sendMessageBox{
-    border: 1px solid blue;
     width: 80%;
     height: 60%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    background-color: #AEB6BF;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    border-radius: 10px 10px 10px 10px;
 }
 
 #sendMessageForm{
@@ -51,14 +52,53 @@
 
 #sendMessageForm input:focus {
     outline: none;
+
 }
 
 #sendMessageForm input[type = text]{
-    border: none;
     width: 80%;
-}
-#sendMessageForm input[disabled = disabled]{
     border: none;
+}
+
+#sendMessage input[type=submit]{
+    border-radius: 10px 10px 10px 10px;
+    background-color: white;
+    border-color: transparent;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+#sendMessage input[type=submit]:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+#sendMessageForm input[disabled = disabled]{
+
     width: 80%;
     text-align: center;
+}
+
+#sendMessageForm input{
+    background-color: rgba(117, 190, 218, 0.0);
+}
+
+#closeButton{
+    position: absolute;
+    top: 0;
+    right: 2%;
+    font-size: 3rem;
+}
+
+#showMessage {
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 90%;
+
+}
+
+.pseudo{
+    font-style: italic;
+    color: white;
+    display: block;
+    width: min-content;
 }

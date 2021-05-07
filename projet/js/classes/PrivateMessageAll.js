@@ -4,11 +4,12 @@ let PrivateMessageAll = function(){
     this.div = document.createElement("div");
     this.div.className = "privateMessage";
     this.parent = document.getElementById("showMessage");
+    //childs are PrivateMessageSingle Object
     this.child = [];
 }
 
+//Append to parent div to be showed it the page
 PrivateMessageAll.prototype.appendToDOM = function(data){
-    console.log(data);
     for(let message of data){
         this.child.push(new PrivateMessageSingle(message));
     }
@@ -18,8 +19,8 @@ PrivateMessageAll.prototype.appendToDOM = function(data){
     }
 }
 
-PrivateMessageAll.prototype.resetContent = function(){
-    this.parent.innerHTML = "";
+PrivateMessageAll.prototype.resetContent = function(user){
+    this.parent.innerHTML = "<div id='sendTo'>" + user + "</div>";
 }
 
 export {PrivateMessageAll};

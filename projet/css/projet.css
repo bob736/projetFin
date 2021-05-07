@@ -8,6 +8,7 @@
     border-bottom: 1px solid black;
     overflow: scroll;
     overflow-x: hidden;
+    background-color: #616A6B;
 }
 
 #projet::-webkit-scrollbar{
@@ -25,7 +26,7 @@
 
 #projet a {
     text-decoration: none;
-    color: black;
+    color: #F2F4F4;
 }
 
 .projetCont{
