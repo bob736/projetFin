@@ -66,6 +66,7 @@
 <script src="js/utils/profileClick.js" type="module"></script>
 <script src="js/classes/Request.js" type="module"></script>
 <script src="js/classes/sendMessage.js" type="module"></script>
+<script src="js/utils/sendMessageFunc.js" type="module"></script>
 <script src="js/classes/MessageSingle.js" type="module"></script>
 <script src="js/classes/MessageAll.js" type="module"></script>
 <script src="js/utils/privateMessage.js" type="module"></script>
