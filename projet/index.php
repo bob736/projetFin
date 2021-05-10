@@ -31,48 +31,7 @@
 
 <?php include "./parts/menu.php" ?>
 <ul id="cont">
-    <li id="projet">
-        <div class="projetCont">
-            <h1>Projet Name</h1>
-            <ul>
-                <li><a href="">Lorem ipsum dolor sit ameezet</a></li>
-                <li><a href="">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="">Lorem ipsum dolor sit amet</a></li>
-            </ul>
-        </div>
-        <div class="projetCont">
-            <h1>Projet Name</h1>
-            <ul>
-                <li><a href="">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="">Lorem ipsum dolor sit amet</a></li>
-            </ul>
-        </div>
-        <div class="projetCont">
-            <h1>Projet Name</h1>
-            <ul>
-                <li><a href="">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="">Lorem ipsum dolor sit amet</a></li>
-            </ul>
-        </div>
-        <div class="projetCont">
-            <h1>Projet Name</h1>
-            <ul>
-                <li><a href="">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="">Lorem ipsum dolor sit amet</a></li>
-            </ul>
-        </div>
-    </li>
+    <?php require_once("./parts/projets.php") ?>
     <li id="categories"></li>
     <li id="data">
         <div id="chat">

@@ -7,4 +7,10 @@ function sanitize($data){
 
     return $data;
 }
+
+function pre($data){
+    echo "<pre>";
+    print_r($data);
+    echo "</pre>";
+}
 ?>

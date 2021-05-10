@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Entity;
+
 use App\Traits\Entity;
 
 class Message

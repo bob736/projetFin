@@ -35,6 +35,10 @@ class UserManager
         }
     }
 
+    /**
+     * Return every user of the database
+     * @return array
+     */
     public function getUsers(): array{
         $conn = $this->db->prepare("SELECT * FROM user");
         $users = [];
@@ -54,6 +58,11 @@ class UserManager
         return $users;
     }
 
+    /**
+     * Return the user's name of a certain user
+     * @param int $id
+     * @return mixed
+     */
     public function getUsernameById(int $id){
         $conn = $this->db->prepare("SELECT name FROM user WHERE id = :id");
         $conn->bindValue(":id", $id);
@@ -62,6 +71,11 @@ class UserManager
         }
     }
 
+    /**
+     * Return all information of a certain user
+     * @param int $id
+     * @return User
+     */
     public function getAllInfoById(int $id){
         $conn = $this->db->prepare("SELECT * FROM user WHERE id = :id");
         $conn->bindValue(":id", $id);
@@ -80,6 +94,11 @@ class UserManager
         }
     }
 
+    /**
+     * Change follow between session's user and a certain user
+     * @param int $id
+     * @return bool
+     */
     public function followUser(int $id){
         $conn = $this->db->prepare("SELECT id FROM userfollow WHERE user1_id = :id1 AND user2_id = :id2");
         $conn->bindValue(":id1", $_SESSION["user1_id"]);
@@ -102,6 +121,11 @@ class UserManager
         }
     }
 
+    /**
+     * Return follow statue between session's user and a certain user
+     * @param $id
+     * @return bool
+     */
     public function getFollow($id){
         $conn = $this->db->prepare("SELECT id FROM userfollow WHERE user1_id = :id1 AND user2_id = :id2");
         $conn->bindValue(":id1", $_SESSION["user1_id"]);
@@ -114,5 +138,18 @@ class UserManager
                 return false;
             }
         }
+    }
+
+    /**
+     * Modifie connected user's informations
+     * @param string $name
+     * @param string $bio
+     */
+    public function modifyUser(string $name, string $bio){
+        $conn = $this->db->prepare("UPDATE user SET bio = :bio, name = :name WHERE id = :id");
+        $conn->bindValue(":bio", $bio);
+        $conn->bindValue(":name", $name);
+        $conn->bindValue(":id", $_SESSION["user1_id"]);
+        $conn->execute();
     }
 }
