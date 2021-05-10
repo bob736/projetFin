@@ -5,15 +5,12 @@ require_once("./include/classRequire_once.php");
 use App\Manager\ProjetManager;
 
 $manager = new ProjetManager();
+$projets = $manager->getProjetByUser($_SESSION["user1_id"]);?>
 
-$manager->getProjetById(1);
-
-?>
-
-
-<li id="projet">
-    <div class="projetCont">
-        <h1>Projet Name</h1>
+<li id="projet"><?php
+    foreach ($projets as $projet){?>
+        <div class="projetCont">
+        <h1><?= $projet->getName() ?></h1>
         <ul>
             <li><a href="">Lorem ipsum dolor sit ameezet</a></li>
             <li><a href="">Lorem ipsum dolor sit amet</a></li>
@@ -21,5 +18,8 @@ $manager->getProjetById(1);
             <li><a href="">Lorem ipsum dolor sit amet</a></li>
             <li><a href="">Lorem ipsum dolor sit amet</a></li>
         </ul>
-    </div>
+    </div><?php
+    }
+    ?>
+
 </li>

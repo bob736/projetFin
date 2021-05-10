@@ -13,6 +13,7 @@ class Projet
     private ?int $id;
     private ?string $name;
     private ?string $link;
+    private ?array $channels;
 
     /**
      * Projet constructor.
@@ -21,12 +22,22 @@ class Projet
      * @param string|null $name
      * @param string|null $link
      */
-    public function __construct(array $users = null, int $id = null, string $name = null, string $link = null)
+    public function __construct(array $users = null, int $id = null, string $name = null, string $link = null, array $channels = null)
     {
         $this->users = $users;
         $this->id = $id;
         $this->name = $name;
         $this->link = $link;
+        $this->channels = $channels;
+    }
+
+    public function getChannels(): ?array{
+        return $this->channels;
+    }
+
+    public function setChannel(array $channels): Projet{
+        $this->channels = $channels;
+        return $this;
     }
 
     /**

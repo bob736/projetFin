@@ -36,4 +36,23 @@ class ProjetManager
         }
         return false;
     }
+
+    public function getProjetByUser(int $id){
+        $conn = $this->db->prepare("SELECT * FROM projet INNER JOIN projetuser ON projetuser.projet_id = projet.id WHERE projetuser.user_id = :id");
+        $conn->bindValue(":id", $id);
+        if($conn->execute()){
+            $projets = [];
+            $selected = $conn->fetchAll();
+            foreach($selected as $select){
+                $projet = new Projet();
+                $projet
+                    ->setName($select["name"])
+                    ->setLink($select["link"])
+                    ->setId($select["projet_id"]);
+                $projets[] = $projet;
+            }
+            return $projets;
+        }
+        return false;
+    }
 }

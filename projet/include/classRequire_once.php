@@ -10,4 +10,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/Manager/UserManager.php";
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/Entity/Projet.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/Manager/ProjetManager.php";
+
+require_once $_SERVER['DOCUMENT_ROOT'] . "/Entity/ProjetChannel.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/Manager/ProjetChannelManager.php";
 ?>
