@@ -1,21 +1,20 @@
-let PrivateMessageSingle = function(data){
+let MessageSingle = function(data){
     this.div = document.createElement("div");
     this.div.className = "singleMessageDiv";
     this.data = data;
-    this.classe = "receive";
 }
 
-PrivateMessageSingle.prototype.setClasse = function(){
+MessageSingle.prototype.setClasse = function(){
     if(this.data.sent){
         this.classe = "sent";
     }
 }
 
 //set Content of single private message
-PrivateMessageSingle.prototype.setContent = function(){
+MessageSingle.prototype.setContent = function(){
     this.setClasse();
     this.div.innerHTML = `
-    <div class="privateMessageContent ${this.classe}">
+    <div class="messageContent">
         <div class="data">
             <div class="pseudo">${this.data.pseudo}</div>
             <div class="date">${this.data.date}</div>
@@ -25,4 +24,4 @@ PrivateMessageSingle.prototype.setContent = function(){
     `;
 }
 
-export {PrivateMessageSingle};
+export {MessageSingle};

@@ -5,7 +5,7 @@ namespace App\Entity;
 
 use App\Traits\Entity;
 
-class ProjetChannel
+class Channel
 {
     use Entity;
 
@@ -14,7 +14,7 @@ class ProjetChannel
     private ?array $messages;
 
     /**
-     * ProjetChannel constructor.
+     * Channel constructor.
      * @param int|null $id
      * @param string|null $name
      * @param array|null $messages
@@ -37,7 +37,7 @@ class ProjetChannel
     /**
      * @param int|null $id
      */
-    public function setId(?int $id): ProjetChannel
+    public function setId(?int $id): Channel
     {
         $this->id = $id;
         return $this;
@@ -54,7 +54,7 @@ class ProjetChannel
     /**
      * @param string|null $name
      */
-    public function setName(?string $name): ProjetChannel
+    public function setName(?string $name): Channel
     {
         $this->name = $name;
         return $this;
@@ -71,7 +71,7 @@ class ProjetChannel
     /**
      * @param array|null $messages
      */
-    public function setMessages(?array $messages): ProjetChannel
+    public function setMessages(?array $messages): Channel
     {
         $this->messages = $messages;
         return $this;

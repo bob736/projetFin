@@ -1,13 +1,9 @@
 import {Request} from "../classes/Request.js";
-import {PrivateMessageAll} from "../classes/PrivateMessageAll.js";
-import {resetDataDivZindex} from "./fonctionUtils.js";
-import {setDivZindex} from "./fonctionUtils.js";
-import {removeDiv} from "./fonctionUtils.js";
+import {MessageAll} from "../classes/MessageAll.js";
 
 const privateMessageReqGet = new Request("privateMessage/get.php?", callback);
 const privateMessageReqPost = new Request("privateMessage/post.php");
 const userReqGet = new Request("user/get.php?", setUserPrivateMessageData)
-const privateMessageSeenPost = new Request("privatMessage/post.php");
 
 const form = document.getElementById("sendMessageForm");
 const submit = form.getElementsByTagName("input")[1];
@@ -26,12 +22,6 @@ let links = document.getElementsByClassName("chatLink");
 for(let link of links){
     link.addEventListener("click", function(e){
         e.preventDefault();
-
-        //Set every child of the DOM element data to z-index 0
-        resetDataDivZindex("data");
-
-        //Set chat element at z-index 1
-        setDivZindex(1,document.getElementById("chat"));
 
         //set user2 to selected user's id
         user2 = link.dataset.id;
@@ -110,10 +100,10 @@ function send(e){
 
 //Callback of get() methode
 function callback(result){
-    let privateMessageObj = new PrivateMessageAll();
+    let privateChat = new MessageAll();
+    privateChat.resetContent(user2name);
+    privateChat.show(result);
     userReqGet.get();
-    privateMessageObj.resetContent(user2name);
-    privateMessageObj.appendToDOM(result);
     //When the scollFlag is set to false , private chat div with scroll to the last message send
     if(!scrollFlag){
         chat.scrollTop = chat.scrollHeight;

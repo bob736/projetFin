@@ -11,15 +11,17 @@ $projets = $manager->getProjetByUser($_SESSION["user1_id"]);?>
     foreach ($projets as $projet){?>
         <div class="projetCont">
         <h1><?= $projet->getName() ?></h1>
-        <ul>
-            <li><a href="">Lorem ipsum dolor sit ameezet</a></li>
-            <li><a href="">Lorem ipsum dolor sit amet</a></li>
-            <li><a href="">Lorem ipsum dolor sit amet</a></li>
-            <li><a href="">Lorem ipsum dolor sit amet</a></li>
-            <li><a href="">Lorem ipsum dolor sit amet</a></li>
+        <ul><?php
+        foreach($projet->getChannels() as $channel){?>
+            <li><a href="#" data-id="<?= $channel->getId() ?>"><?= $channel->getName() ?></a></li><?php
+        }
+        ?>
+
         </ul>
     </div><?php
     }
     ?>
-
 </li>
+<script src="./js/classes/Request.js" type="module"></script>
+<script src="./js/classes/Channel.js" type="module"></script>
+<script src="./js/utils/channelChat.js" type="module"></script>

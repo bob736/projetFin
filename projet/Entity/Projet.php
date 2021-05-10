@@ -35,7 +35,7 @@ class Projet
         return $this->channels;
     }
 
-    public function setChannel(array $channels): Projet{
+    public function setChannels(array $channels): Projet{
         $this->channels = $channels;
         return $this;
     }

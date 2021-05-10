@@ -87,7 +87,6 @@ class UserManager
                 ->setMail($info["mail"])
                 ->setLien($info["lienGithub"])
                 ->setName($info["name"])
-                ->setPass($info["pass"])
                 ->setIcon($info["icone"])
                 ->setBio($info["bio"]);
             return $user;
@@ -152,4 +151,5 @@ class UserManager
         $conn->bindValue(":id", $_SESSION["user1_id"]);
         $conn->execute();
     }
+
 }

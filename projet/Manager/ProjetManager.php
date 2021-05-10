@@ -6,6 +6,7 @@ namespace App\Manager;
 use App\Traits\GlobalManager;
 use App\Entity\Projet;
 use App\Manager\UserManager;
+use App\Entity\Channel;
 
 class ProjetManager
 {
@@ -27,6 +28,9 @@ class ProjetManager
                     $users[] = $manager->getUsernameById($select["user_id"]);
             }
             $projet = new Projet();
+
+
+
             $projet
                 ->setName($selected[0]["name"])
                 ->setId($selected[0]["projet_id"])
@@ -45,10 +49,24 @@ class ProjetManager
             $selected = $conn->fetchAll();
             foreach($selected as $select){
                 $projet = new Projet();
+                //Get channel
+                $conn = $this->db->prepare("SELECT * FROM channel WHERE id = :id");
+                $conn->bindValue(":id", $select["projet_id"]);
+                $channels = [];
+                if($conn->execute()){
+                    foreach($conn->fetchAll() as $select2){
+                        $channel = new Channel();
+                        $channel
+                            ->setId($select2["id"])
+                            ->setName($select2["name"]);
+                        $channels[] = $channel;
+                    }
+                }
                 $projet
                     ->setName($select["name"])
                     ->setLink($select["link"])
-                    ->setId($select["projet_id"]);
+                    ->setId($select["projet_id"])
+                    ->setChannels($channels);
                 $projets[] = $projet;
             }
             return $projets;

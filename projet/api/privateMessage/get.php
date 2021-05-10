@@ -21,7 +21,7 @@ switch($requestType) {
 }
 
 /**
- * Return json object of an array of PrivateMessage
+ * Return json object of an array of Message
  * @param $id_user2
  * @param PrivateMessageManager $messageManager
  * @return false|string

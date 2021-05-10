@@ -3,7 +3,7 @@
 namespace App\Manager;
 
 use App\Traits\GlobalManager;
-use App\Entity\PrivateMessage;
+use App\Entity\Message;
 
 session_start();
 
@@ -19,7 +19,7 @@ class PrivateMessageManager
         $conn->execute();
         $messages = [];
         foreach($conn->fetchAll() as $select){
-            $message = new PrivateMessage();
+            $message = new Message();
             //When the sender of the message is the connected one then i set the sent parameter to true
             //It will be used to set the message class to style it and place it at right
 

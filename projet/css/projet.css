@@ -21,12 +21,12 @@
 
 #projet li {
     margin-left: 5%;
-    margin-top: 5%;
 }
 
 #projet a {
     text-decoration: none;
-    color: #F2F4F4;
+    font-size: 1.5rem;
+    color: #ff7e5f;
 }
 
 .projetCont{
