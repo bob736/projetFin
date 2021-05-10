@@ -24,7 +24,7 @@ function interval(id){
             channelReqGet.resetLink();
             channelReqGet.link += "?action=see&channel=" + id;
             channelReqGet.get();
-            sendMessageEvent("channelMessage");
+            sendMessageEvent("channelMessage","channel");
             interval(id);
         }
     },1000);

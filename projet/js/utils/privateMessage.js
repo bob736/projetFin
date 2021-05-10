@@ -1,6 +1,6 @@
 import {Request} from "../classes/Request.js";
 import {MessageAll} from "../classes/MessageAll.js";
-import {SendMessage} from "../classes/sendMessage.js";
+import {sendMessageEvent} from "./sendMessageFunc.js";
 
 const privateMessageReqGet = new Request("privateMessage/get.php?", callback);
 const userReqGet = new Request("user/get.php?", setUserPrivateMessageData)
@@ -50,8 +50,8 @@ function timeOutRecurePrivateMessage(){
             //get private chat between user2
 
             privateMessageReqGet.get();
+            sendMessageEvent("privateChat","privateMessage", user2);
         }
-        sendMessage();
         timeOutRecurePrivateMessage();
     },1000)
 }
@@ -80,24 +80,6 @@ function setCloseButton(){
     document.getElementById("chat").append(icon)
 }
 
-function sendMessage(){
-    submit.removeEventListener("click", sendMessageFunction);
-    if(chat.className === "privateChat") {
-        submit.addEventListener("click",  sendMessageFunction);
-    }
-}
-
-function sendMessageFunction(){
-    let input = form.getElementsByTagName("input")[0];
-
-    let message = input.value;
-    if (message.length > 0) {
-        let send = new SendMessage("privateMessage");
-        send.setData({"user": user2, "message": message});
-        send.send();
-        scrollFlag = false;
-    }
-}
 
 
 //Callback of get() methode
