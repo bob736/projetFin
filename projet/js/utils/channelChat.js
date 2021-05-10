@@ -16,5 +16,7 @@ for(let link of channelLink){
 function callback(data){
     let channel = new MessageAll(data);
     channel.resetContent();
+    channel.setFirstContent("<div id='sendTo'>" +  + "</div>")
+    channel.parent.className = "channelMessage";
     channel.show(data);
 }

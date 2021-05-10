@@ -5,7 +5,13 @@ require_once("./include/classRequire_once.php");
 use App\Manager\ProjetManager;
 
 $manager = new ProjetManager();
-$projets = $manager->getProjetByUser($_SESSION["user1_id"]);?>
+if(isset($_SESSION["user1_id"])){
+    $projets = $manager->getProjetByUser($_SESSION["user1_id"]);
+}
+else{
+    $projets = [];
+}
+?>
 
 <li id="projet"><?php
     foreach ($projets as $projet){?>

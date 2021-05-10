@@ -1,19 +1,21 @@
 import {Request} from "../classes/Request.js";
 import {MessageAll} from "../classes/MessageAll.js";
+import {SendMessage} from "../classes/sendMessage.js";
 
 const privateMessageReqGet = new Request("privateMessage/get.php?", callback);
-const privateMessageReqPost = new Request("privateMessage/post.php");
 const userReqGet = new Request("user/get.php?", setUserPrivateMessageData)
 
 const form = document.getElementById("sendMessageForm");
 const submit = form.getElementsByTagName("input")[1];
-const chat = document.getElementById("showMessage");
+let chat = document.getElementById("showMessage");
 
 let scrollFlag = true;
 
 let user2 = null;
 let userSet = false;
 let user2name = "";
+
+let sent = false;
 
 let icon = null;
 
@@ -27,13 +29,14 @@ for(let link of links){
         user2 = link.dataset.id;
         userReqGet.resetLink();
         userReqGet.link += "user=" + user2;
+        chat.className = "privateChat";
         userSet = false;
     })
 }
 
 function timeOutRecurePrivateMessage(){
     setTimeout(function(){
-        if(user2 !== null){
+        if(user2 !== null && chat.className === "privateChat" ){
             if(!userSet){
                 //reset request link to base api url set when object is created line.3
                 privateMessageReqGet.resetLink();
@@ -42,18 +45,18 @@ function timeOutRecurePrivateMessage(){
                 privateMessageReqGet.link += "user=" + user2.toString();
                 userSet = true;
                 setCloseButton();
-                sendMessage();
 
             }
             //get private chat between user2
+
             privateMessageReqGet.get();
-            document.getElementById("data").dataset.state = "private";
         }
+        sendMessage();
         timeOutRecurePrivateMessage();
     },1000)
 }
 
-//Set an icone to hide the private chat
+//Set an icon to hide the private chat
 function setCloseButton(){
     //remove existing close button
     try{
@@ -78,30 +81,29 @@ function setCloseButton(){
 }
 
 function sendMessage(){
-    submit.addEventListener("click", send);
-}
-
-function send(e){
-    let input = form.getElementsByTagName("input")[0];
-    e.preventDefault();
-
-    //Check if we are in the case of a private chat
-    //Then if the message is not empty the message is send to the database
-    if(document.getElementById("data").dataset.state === "private"){
-        let message = input.value;
-        if(message.length > 0){
-            privateMessageReqPost.resetLink();
-            privateMessageReqPost.setData({"user2": user2, "message": message});
-            privateMessageReqPost.send();
-            scrollFlag = false;
-        }
+    submit.removeEventListener("click", sendMessageFunction);
+    if(chat.className === "privateChat") {
+        submit.addEventListener("click",  sendMessageFunction);
     }
 }
+
+function sendMessageFunction(){
+    let input = form.getElementsByTagName("input")[0];
+
+    let message = input.value;
+    if (message.length > 0) {
+        let send = new SendMessage("privateMessage");
+        send.setData({"user": user2, "message": message});
+        send.send();
+        scrollFlag = false;
+    }
+}
+
 
 //Callback of get() methode
 function callback(result){
     let privateChat = new MessageAll();
-    privateChat.resetContent(user2name);
+    privateChat.setFirstContent("<div id='sendTo'>" + user2name + "</div>");
     privateChat.show(result);
     userReqGet.get();
     //When the scollFlag is set to false , private chat div with scroll to the last message send

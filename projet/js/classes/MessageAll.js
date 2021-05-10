@@ -3,7 +3,6 @@ import {MessageSingle} from "./MessageSingle.js";
 let MessageAll = function(id){
     this.id = id;
     this.parent = document.getElementById("showMessage");
-    this.parent.className = "channelMessage";
     this.data = null;
     this.child = [];
 }
@@ -20,7 +19,11 @@ MessageAll.prototype.show = function(data){
 }
 
 MessageAll.prototype.resetContent = function(user){
-    this.parent.innerHTML = "<div id='sendTo'>" + user + "</div>";
+    this.parent.innerHTML = "";
+}
+
+MessageAll.prototype.setFirstContent = function(content){
+    this.parent.innerHTML = content;
 }
 
 export {MessageAll};
