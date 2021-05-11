@@ -33,6 +33,14 @@ class ChannelManager
                     ->setDate($select["date"])
                     ->setText($select["message"])
                     ->setId($select["message_id"]);
+                if($message->getUserId() === $_SESSION["user1_id"]){
+                    $message
+                        ->setSent(true);
+                }
+                else{
+                    $message
+                        ->setSent(false);
+                }
                 $messages[] = $message;
             }
             return $messages;

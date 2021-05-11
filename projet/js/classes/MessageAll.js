@@ -15,6 +15,12 @@ MessageAll.prototype.show = function(data){
     for(let child of this.child){
         child.setContent();
         this.parent.append(child.div);
+
+        //set date height then I can place date to bottom of text element
+        let text = child.div.getElementsByClassName("text")[0];
+        let date = child.div.getElementsByClassName("date")[0];
+
+        date.style.height = getComputedStyle(text).height;
     }
 }
 

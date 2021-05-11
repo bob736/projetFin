@@ -14,6 +14,7 @@ const form = document.getElementById("sendMessageForm");
 const submit = form.getElementsByTagName("input")[1];
 
 let idFlag = 0
+let scrollPostion;
 
 //Show channel message when click on channel link
 for(let link of channelLink){
@@ -38,10 +39,18 @@ function interval(id){
 
 
 function setChat(data){
+    try{
+        scrollPostion = chat.scrollTop;
+    }
+    catch(e){}
+
     let channel = new MessageAll();
     channel.resetContent();
     channel.show(data);
+    chat.scrollTop = scrollPostion;
 }
 
+
 function showUsers(data){
+
 }

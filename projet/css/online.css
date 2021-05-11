@@ -40,3 +40,8 @@
     color: cadetblue;
     text-shadow: 2px 2px 2px blanchedalmond;
 }
+
+#name {
+    max-width: 5vw;
+    overflow: hidden;
+}

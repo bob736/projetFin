@@ -9,11 +9,11 @@ function sendMessageEvent(chatClasse,api, data = null,){
     let submitClone = submit.cloneNode(true);
     submit.parentNode.replaceChild(submitClone,submit);
     if(chat.className === chatClasse) {
-        submitClone.addEventListener("click",  sendMessageFunction.bind(event,data,api));
+        submitClone.addEventListener("click", sendMessageFunction.bind(event,data,api,chatClasse));
     }
 }
 //Create a sendMessage object that will send the value of the form input element
-function sendMessageFunction(data,api){
+function sendMessageFunction(data,api,chatClasse){
     let form = document.querySelector("#sendMessageForm form");
     let input = form.getElementsByTagName("input")[0];
     let message = input.value;
@@ -29,6 +29,13 @@ function sendMessageFunction(data,api){
         }
         send.setData(obj);
         send.send();
+
+        //Scroll chat to bottom when a new message is sent
+        let chat = document.getElementsByClassName(chatClasse)[0];
+        setTimeout(()=>{
+            chat.scrollTop = chat.scrollHeight;
+        },1000);
+
     }
 }
 

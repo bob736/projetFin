@@ -1,15 +1,13 @@
 .singleMessageDiv{
-    width:100%;
     font-size: 2rem;
-    background-color: #AAB7B8;
     padding: 2%;
-    margin-bottom: 2vh;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+
 }
 
 .privateChat .singleMessageDiv{
     position: relative;
     top: 5vh;
+
 }
 
 .singleMessageDiv .data .date{
@@ -42,5 +40,9 @@
 }
 
 #closeButton{
+    position: absolute;
+    top: 0;
+    right: 2%;
+    font-size: 3rem;
     z-index: 2;
 }

@@ -136,7 +136,6 @@ function changeFollow(id){
 
 //Try to remove profilePage if it exist
 function closeFunc(){
-    console.log("ok");
     try{
         removeDiv(document.getElementById("profilePage"));
     }

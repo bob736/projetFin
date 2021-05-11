@@ -10,6 +10,7 @@ const submit = form.getElementsByTagName("input")[1];
 let chat = document.getElementById("showMessage");
 
 let scrollFlag = true;
+let scrollPostion;
 
 let user2 = null;
 let userSet = false;
@@ -86,15 +87,17 @@ function setCloseButton(){
 
 //Callback of get() methode
 function callback(result){
+    try{
+        scrollPostion = chat.scrollTop;
+    }
+    catch(e){}
     let privateChat = new MessageAll();
     privateChat.setFirstContent("<div id='sendTo'>" + user2name + "</div>");
     privateChat.show(result);
     userReqGet.get();
     //When the scollFlag is set to false , private chat div with scroll to the last message send
-    if(!scrollFlag){
-        chat.scrollTop = chat.scrollHeight;
-        scrollFlag = true;
-    }
+    chat.scrollTop = scrollPostion;
+
 }
 
 //Set placeholder of send message input to the selected user

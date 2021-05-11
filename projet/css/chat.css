@@ -82,12 +82,7 @@
     background-color: rgba(117, 190, 218, 0.0);
 }
 
-#closeButton{
-    position: absolute;
-    top: 0;
-    right: 2%;
-    font-size: 3rem;
-}
+
 
 #showMessage {
     overflow: scroll;
@@ -103,4 +98,51 @@
     width: min-content;
 }
 
+.text{
+    max-width: 60%;
+    padding: 2%;
+    display: inline-block;
+    background-color: lightgreen;
+    color: white !important;
+    margin: 2%;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    border-radius: 0px 15px 15px 15px;
+}
+
+.date{
+    position: relative;
+    top: 0;
+    display: inline-block;
+}
+
+.sent .data{
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+}
+
+.sent .pseudo{
+    display: block;
+    width: 100%;
+    text-align: right;
+}
+
+.sent .text{
+    display: inline-block;
+    position: relative;
+
+    margin-top: 1%;
+    margin-right: 6%;
+    background-color: dimgrey;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    border-radius: 15px 0px 15px 15px;
+}
+
+.sent .date{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
 

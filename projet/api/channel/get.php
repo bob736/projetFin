@@ -36,6 +36,7 @@ function getMessage(ChannelManager $manager, int $id){
             "pseudo" => $message->getUsername(),
             "message" => $message->getText(),
             "date" => $message->getDate(),
+            "sent" => $message->getSent()
         ];
     }
     return json_encode($return);
