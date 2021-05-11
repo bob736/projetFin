@@ -14,6 +14,7 @@
             if($user->getPass() === $pass){
                 $_SESSION["user1_id"] = $user->getId();
                 $_SESSION["connected"] = true;
+                $_SESSION["role"] = $user->getRole();
                 header("Location: ../index.php");
             }
             else{

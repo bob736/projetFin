@@ -34,3 +34,15 @@
     margin-bottom: 2%;
     margin-left: 2%;
 }
+
+#addProject{
+    font-size: 1.8rem;
+    width: 100%;
+    text-align: center;
+}
+
+#addProject i:hover{
+    color: cadetblue;
+    text-shadow: 2px 2px 2px blanchedalmond;
+    cursor: pointer;
+}

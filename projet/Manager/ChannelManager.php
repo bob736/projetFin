@@ -1,7 +1,12 @@
 <?php
 
 
+
 namespace App\Manager;
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 use App\Traits\GlobalManager;
 use App\Manager\UserManager;
@@ -34,4 +39,19 @@ class ChannelManager
         }
         return false;
     }
+
+    public function sendMessage(string $message, int $channel){
+        $conn = $this->db->prepare("INSERT INTO message (message, date, user_id) VALUES (:message, :date, :user_id)");
+        $conn->bindValue(":message", sanitize($message));
+        $conn->bindValue(":date", date('l jS \of F Y h:i:s A'));
+        $conn->bindValue(":user_id", $_SESSION["user1_id"]);
+        $conn->execute();
+
+        $id = $this->db->lastInsertId();
+        $conn = $this->db->prepare("INSERT INTO channelmessages (channel_id, message_id) VALUES (:chanid, :messid)");
+        $conn->bindValue(":chanid", sanitize($channel));
+        $conn->bindValue(":messid", $id);
+        $conn->execute();
+    }
+
 }

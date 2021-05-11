@@ -6,7 +6,13 @@ use App\Manager\ProjetManager;
 
 $manager = new ProjetManager();
 if(isset($_SESSION["user1_id"])){
-    $projets = $manager->getProjetByUser($_SESSION["user1_id"]);
+    if($_SESSION["role"] === "super_admin"){
+        $projets = $manager->getAllProject();
+    }
+    else{
+        $projets = $manager->getProjetByUser($_SESSION["user1_id"]);
+    }
+
 }
 else{
     $projets = [];
@@ -25,6 +31,11 @@ else{
 
         </ul>
     </div><?php
+    }
+    if($_SESSION["role"] === "super_admin"){?>
+        <div id="addProject"><i class="fas fa-plus"></i></div>
+        <script src="./js/utils/addProject.js"></script>
+        <?php
     }
     ?>
 </li>

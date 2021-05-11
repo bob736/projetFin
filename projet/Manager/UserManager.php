@@ -20,12 +20,21 @@ class UserManager
             $selected = $conn->fetchAll();
             if(count($selected) > 0){
                 $selected = $selected[0];
+                $conn = $this->db->prepare("SELECT name FROM userrole WHERE id = :id");
+                $conn->bindValue(":id", $selected["userrole_id"]);
+                if($conn->execute()){
+                    $role = $conn->fetch()["name"];
+                }
+                else{
+                    $role = null;
+                }
                 $user = new User();
                 $user
                     ->setId($selected["id"])
                     ->setMail($selected["mail"])
                     ->setPass($selected["pass"])
                     ->setName($selected["name"])
+                    ->setRole($role)
                     ->setLien($selected["lienGithub"]);
                 return $user;
             }
@@ -82,12 +91,21 @@ class UserManager
         if($conn->execute()){
             $user = new User();
             $info = $conn->fetch();
+            $conn = $this->db->prepare("SELECT name FROM userrole WHERE id = :id");
+            $conn->bindValue(":id", $info["userrole_id"]);
+            if($conn->execute()){
+                $role = $conn->fetch()["name"];
+            }
+            else{
+                $role = null;
+            }
             $user
                 ->setId($info["id"])
                 ->setMail($info["mail"])
                 ->setLien($info["lienGithub"])
                 ->setName($info["name"])
                 ->setIcon($info["icone"])
+                ->setRole($role)
                 ->setBio($info["bio"]);
             return $user;
         }

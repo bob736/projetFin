@@ -14,6 +14,7 @@ class User
     private ?string $lien;
     private ?string $icon;
     private ?string $bio;
+    private ?string $role;
 
     /**
      * User constructor.
@@ -22,7 +23,7 @@ class User
      * @param string|null $pass
      * @param string|null $mail
      */
-    public function __construct(int $id = null, string $name= null, string $pass= null, string $mail= null, string $lien = null, string $icon = null, string $bio = null)
+    public function __construct(int $id = null, string $name= null, string $pass= null, string $mail= null, string $lien = null, string $icon = null, string $bio = null, string $role = null)
     {
         $this->id = $id;
         $this->name = $name;
@@ -31,6 +32,24 @@ class User
         $this->lien = $lien;
         $this->icon = $icon;
         $this->bio = $bio;
+        $this->role = $role;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    /**
+     * @param string|null $role
+     */
+    public function setRole(?string $role): User
+    {
+        $this->role = $role;
+        return $this;
     }
 
     /**

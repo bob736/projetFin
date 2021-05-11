@@ -12,5 +12,5 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/Entity/Projet.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/Manager/ProjetManager.php";
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/Entity/Channel.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/Manager/ProjetChannelManager.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/Manager/ChannelManager.php";
 ?>

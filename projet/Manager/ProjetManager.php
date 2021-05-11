@@ -73,4 +73,42 @@ class ProjetManager
         }
         return false;
     }
+
+    public function getAllProject(){
+        if($_SESSION["role"] === "super_admin"){
+            $conn = $this->db->prepare("SELECT * FROM projet");
+            if($conn->execute()){
+                $projets = [];
+                $selected = $conn->fetchAll();
+                foreach($selected as $select){
+                    $projet = new Projet();
+                    //Get channel
+                    $conn = $this->db->prepare("SELECT * FROM channel WHERE id = :id");
+                    $conn->bindValue(":id", $select["id"]);
+                    $channels = [];
+                    if($conn->execute()){
+                        foreach($conn->fetchAll() as $select2){
+                            $channel = new Channel();
+                            $channel
+                                ->setId($select2["id"])
+                                ->setName($select2["name"]);
+                            $channels[] = $channel;
+                        }
+                    }
+                    $projet
+                        ->setName($select["name"])
+                        ->setLink($select["link"])
+                        ->setId($select["id"])
+                        ->setChannels($channels);
+                    $projets[] = $projet;
+                }
+                return $projets;
+            }
+            return false;
+        }
+        else{
+            return false;
+        }
+    }
+
 }

@@ -1083,242 +1083,357 @@ amrq8237\\_tchat|schema||amrq8237||UPDATE|G</Grants>
       <Charset>utf8mb4</Charset>
     </collation>
     <user id="328" parent="1" name="amrq8237"/>
-    <table id="329" parent="3" name="privatemessage">
+    <table id="329" parent="3" name="channel"/>
+    <table id="330" parent="3" name="channelmessages"/>
+    <table id="331" parent="3" name="message"/>
+    <table id="332" parent="3" name="privatemessage">
       <Collation>utf8_bin</Collation>
     </table>
-    <table id="330" parent="3" name="projet"/>
-    <table id="331" parent="3" name="projetuser"/>
-    <table id="332" parent="3" name="user">
+    <table id="333" parent="3" name="projet"/>
+    <table id="334" parent="3" name="projetuser"/>
+    <table id="335" parent="3" name="user">
       <Collation>utf8_bin</Collation>
     </table>
-    <table id="333" parent="3" name="userfollow">
+    <table id="336" parent="3" name="userfollow">
       <Collation>utf8_bin</Collation>
     </table>
-    <table id="334" parent="3" name="userrole">
+    <table id="337" parent="3" name="userrole">
       <Collation>utf8_bin</Collation>
     </table>
-    <column id="335" parent="329" name="id">
+    <column id="338" parent="329" name="id">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="336" parent="329" name="user1_id">
-      <Position>2</Position>
-      <DataType>int(10) unsigned|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="337" parent="329" name="user2_id">
-      <Position>3</Position>
-      <DataType>int(10) unsigned|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="338" parent="329" name="message">
-      <Position>4</Position>
-      <DataType>text|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="339" parent="329" name="date">
-      <Position>5</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="340" parent="329" name="seen">
-      <Position>6</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>0</DefaultExpression>
-    </column>
-    <index id="341" parent="329" name="user1_id">
-      <ColNames>user1_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="342" parent="329" name="user2_id">
-      <ColNames>user2_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="343" parent="329" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="344" parent="329" name="user1_id">
-      <ColNames>user1_id</ColNames>
-      <RefTableName>user</RefTableName>
-      <RefColNames>id</RefColNames>
-      <OnDelete>cascade</OnDelete>
-    </foreign-key>
-    <foreign-key id="345" parent="329" name="user2_id">
-      <ColNames>user2_id</ColNames>
-      <RefTableName>user</RefTableName>
-      <RefColNames>id</RefColNames>
-      <OnDelete>cascade</OnDelete>
-    </foreign-key>
-    <column id="346" parent="330" name="id">
-      <Position>1</Position>
-      <DataType>int(10) unsigned|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="347" parent="330" name="name">
+    <column id="339" parent="329" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="348" parent="330" name="link">
-      <Position>3</Position>
-      <DataType>text|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <key id="349" parent="330" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="350" parent="331" name="id">
-      <Position>1</Position>
-      <DataType>int(10) unsigned|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="351" parent="331" name="user_id">
-      <Position>2</Position>
-      <DataType>int(10) unsigned|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="352" parent="331" name="projet_id">
+    <column id="340" parent="329" name="projet_id">
       <Position>3</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="353" parent="331" name="user_id">
-      <ColNames>user_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="354" parent="331" name="projet_id">
+    <index id="341" parent="329" name="projet_fk">
       <ColNames>projet_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="355" parent="331" name="PRIMARY">
+    <key id="342" parent="329" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="356" parent="331" name="user_id">
-      <ColNames>user_id</ColNames>
-      <RefTableName>user</RefTableName>
-      <RefColNames>id</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
-      <OnDelete>cascade</OnDelete>
-    </foreign-key>
-    <foreign-key id="357" parent="331" name="projet_id">
+    <foreign-key id="343" parent="329" name="projet_fk">
       <ColNames>projet_id</ColNames>
       <RefTableName>projet</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="358" parent="332" name="id">
+    <column id="344" parent="330" name="id">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="359" parent="332" name="name">
+    <column id="345" parent="330" name="channel_id">
+      <Position>2</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="346" parent="330" name="message_id">
+      <Position>3</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="347" parent="330" name="channel_fk">
+      <ColNames>channel_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="348" parent="330" name="message_fk">
+      <ColNames>message_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="349" parent="330" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="350" parent="330" name="channel_fk">
+      <ColNames>channel_id</ColNames>
+      <RefTableName>channel</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="351" parent="330" name="message_fk">
+      <ColNames>message_id</ColNames>
+      <RefTableName>message</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="352" parent="331" name="id">
+      <Position>1</Position>
+      <DataType>int(11) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="353" parent="331" name="message">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="354" parent="331" name="date">
+      <Position>3</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="355" parent="331" name="user_id">
+      <Position>4</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="356" parent="331" name="user_fk">
+      <ColNames>user_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="357" parent="331" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="358" parent="331" name="user_fk">
+      <ColNames>user_id</ColNames>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="359" parent="332" name="id">
+      <Position>1</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="360" parent="332" name="user1_id">
+      <Position>2</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="361" parent="332" name="user2_id">
+      <Position>3</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="362" parent="332" name="message">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="363" parent="332" name="date">
+      <Position>5</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="364" parent="332" name="seen">
+      <Position>6</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <index id="365" parent="332" name="user1_id">
+      <ColNames>user1_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="366" parent="332" name="user2_id">
+      <ColNames>user2_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="367" parent="332" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="368" parent="332" name="user1_id">
+      <ColNames>user1_id</ColNames>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="369" parent="332" name="user2_id">
+      <ColNames>user2_id</ColNames>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="370" parent="333" name="id">
+      <Position>1</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="371" parent="333" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="372" parent="333" name="link">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="373" parent="333" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="374" parent="334" name="id">
+      <Position>1</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="375" parent="334" name="user_id">
+      <Position>2</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="376" parent="334" name="projet_id">
+      <Position>3</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="377" parent="334" name="user_id">
+      <ColNames>user_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="378" parent="334" name="projet_id">
+      <ColNames>projet_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="379" parent="334" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="380" parent="334" name="user_id">
+      <ColNames>user_id</ColNames>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="381" parent="334" name="projet_id">
+      <ColNames>projet_id</ColNames>
+      <RefTableName>projet</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="382" parent="335" name="id">
+      <Position>1</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="383" parent="335" name="name">
       <Position>2</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="360" parent="332" name="pass">
+    <column id="384" parent="335" name="pass">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="361" parent="332" name="mail">
+    <column id="385" parent="335" name="mail">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="362" parent="332" name="lienGithub">
+    <column id="386" parent="335" name="lienGithub">
       <Position>5</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="363" parent="332" name="userrole_id">
+    <column id="387" parent="335" name="userrole_id">
       <Position>6</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="364" parent="332" name="icone">
+    <column id="388" parent="335" name="icone">
       <Position>7</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;user_mal.svg&apos;</DefaultExpression>
     </column>
-    <column id="365" parent="332" name="bio">
+    <column id="389" parent="335" name="bio">
       <Position>8</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem eros, sodales eu libero sed amet.&apos;</DefaultExpression>
     </column>
-    <key id="366" parent="332" name="PRIMARY">
+    <key id="390" parent="335" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="367" parent="333" name="id">
+    <column id="391" parent="336" name="id">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="368" parent="333" name="user1_id">
+    <column id="392" parent="336" name="user1_id">
       <Position>2</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="369" parent="333" name="user2_id">
+    <column id="393" parent="336" name="user2_id">
       <Position>3</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="370" parent="333" name="user1_id_follow">
+    <index id="394" parent="336" name="user1_id_follow">
       <ColNames>user1_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="371" parent="333" name="user2_id_follow">
+    <index id="395" parent="336" name="user2_id_follow">
       <ColNames>user2_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="372" parent="333" name="PRIMARY">
+    <key id="396" parent="336" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="373" parent="333" name="user1_id_follow">
+    <foreign-key id="397" parent="336" name="user1_id_follow">
       <ColNames>user1_id</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="374" parent="333" name="user2_id_follow">
+    <foreign-key id="398" parent="336" name="user2_id_follow">
       <ColNames>user2_id</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="375" parent="334" name="id">
+    <column id="399" parent="337" name="id">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="376" parent="334" name="name">
+    <column id="400" parent="337" name="name">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="377" parent="334" name="PRIMARY">
+    <key id="401" parent="337" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

@@ -12,7 +12,11 @@ $manager = new ChannelManager();
 switch($requestType) {
     case 'POST':
         $data = json_decode(file_get_contents('php://input'));
-        pre($data);
+        sendChannelMessage($manager, $data->message, $data->data);
     default:
         break;
+}
+
+function sendChannelMessage(ChannelManager $manager, string $message, int $channel){
+    $manager->sendMessage($message, $channel);
 }

@@ -24,5 +24,5 @@ switch($requestType) {
 
 
 function sendPrivateMessage(PrivateMessageManager $messageManager, $data){
-    $messageManager->sendMessage($data->user,$data->message);
+    $messageManager->sendMessage($data->data,$data->message);
 }
