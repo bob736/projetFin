@@ -9,7 +9,7 @@ SendMessage.prototype.setData = function (data){
     this.data = data;
 }
 
-//Send data to the selected api in POST
+//Send data to the selected api in POST with data gift
 SendMessage.prototype.send = function (){
     if(this.data !== null){
         let req = new Request(this.api + "/post.php");

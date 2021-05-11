@@ -15,8 +15,6 @@ let user2 = null;
 let userSet = false;
 let user2name = "";
 
-let sent = false;
-
 let icon = null;
 
 //Set a event on every private chat links
@@ -34,6 +32,8 @@ for(let link of links){
     })
 }
 
+
+//Time out to show private message between 2 users
 function timeOutRecurePrivateMessage(){
     setTimeout(function(){
         if(user2 !== null && chat.className === "privateChat" ){
@@ -47,9 +47,11 @@ function timeOutRecurePrivateMessage(){
                 setCloseButton();
 
             }
-            //get private chat between user2
 
+            //get private chat between user2
             privateMessageReqGet.get();
+
+            //set a send message event on the input submit
             sendMessageEvent("privateChat","privateMessage", user2);
         }
         timeOutRecurePrivateMessage();
