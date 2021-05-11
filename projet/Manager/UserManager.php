@@ -170,4 +170,26 @@ class UserManager
         $conn->execute();
     }
 
+    /**
+     * Get followed users of connected's one
+     * @return array
+     */
+    public function getFollowedUsers(){
+        $conn = $this->db->prepare("SELECT * FROM user INNER JOIN userfollow ON user.id = userfollow.user2_id WHERE userfollow.user1_id = :id ");
+        $conn->bindValue(":id", $_SESSION["user1_id"]);
+        if ($conn->execute()) {
+            $selected = $conn->fetchAll();
+            $users = [];
+            foreach ($selected as $select) {
+                $user = new User();
+                $user
+                    ->setId($select["user2_id"])
+                    ->setName($select["name"])
+                    ->setIcon($select["icone"]);
+                $users[] = $user;
+            }
+            return $users;
+        }
+    }
+
 }

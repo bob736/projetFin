@@ -15,7 +15,7 @@ $requestType = $_SERVER['REQUEST_METHOD'];
 switch($requestType) {
     case 'POST':
         $data = json_decode(file_get_contents('php://input'));
-        if(isset($_GET)){
+        if(isset($_GET, $_GET["action"])){
             if($_GET["action"] === "modif"){
                 modifProfile($userManager, $data->id, $data->name, $data->bio);
                 break;

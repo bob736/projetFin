@@ -1,15 +1,16 @@
 .singleMessageDiv{
-    position: sticky;
-    top: 5vh;
     width:100%;
-    height: min-content;
     font-size: 2rem;
     background-color: #AAB7B8;
     padding: 2%;
-    margin-top: 2vh;
+    margin-bottom: 2vh;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
+.privateChat .singleMessageDiv{
+    position: relative;
+    top: 5vh;
+}
 
 .singleMessageDiv .data .date{
     font-size: 1rem;

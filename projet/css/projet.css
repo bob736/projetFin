@@ -46,3 +46,36 @@
     text-shadow: 2px 2px 2px blanchedalmond;
     cursor: pointer;
 }
+
+#divNewProjectForm{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+#divNewProjectForm i{
+    font-size: 1.8rem;
+}
+
+#divNewProjectForm i:hover{
+    color: cadetblue;
+    text-shadow: 2px 2px 2px blanchedalmond;
+    cursor: pointer;
+}
+
+#divNewProjectForm input {
+    padding: 2px;
+    font-size: 1.3rem;
+    border-width: 1px;
+    border-color: #CCCCCC;
+    background-color: #FFFFFF;
+    color: #000000;
+    border-style: solid;
+    border-radius: 0px;
+    box-shadow: 0px 0px 3px rgba(66,66,66,.75);
+    text-shadow: -50px 0px 0px rgba(66,66,66,.0);
+}
+
+#divNewProjectForm input:focus {
+    outline:none;
+}

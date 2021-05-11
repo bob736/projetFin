@@ -8,7 +8,7 @@ require_once("./Manager/UserManager.php");
 use App\Manager\UserManager;
 
 $userManager = new UserManager();
-$users = $userManager->getUsers();
+$users = $userManager->getFollowedUsers();
 
 
 foreach($users as $user){

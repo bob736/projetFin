@@ -1,7 +1,7 @@
 import {SendMessage} from "../classes/sendMessage.js";
 
 //Create an event on submit form element
-function sendMessageEvent(chatClasse,api,data = null,){
+function sendMessageEvent(chatClasse,api, data = null,){
     let submit = document.querySelector("#sendMessageForm input[type=submit]");
     let chat = document.getElementById("showMessage");
 

@@ -4,7 +4,10 @@ import {sendMessageEvent} from "./sendMessageFunc.js"
 
 
 let channelLink = document.querySelectorAll("#projet li > a")
-let channelReqGet = new Request("channel/get.php", callback);
+
+let channelReqGet = new Request("channel/get.php", setChat);
+let channelUserGet = new Request("channel/get.php",showUsers)
+
 let chat = document.getElementById("showMessage");
 
 const form = document.getElementById("sendMessageForm");
@@ -34,8 +37,11 @@ function interval(id){
 }
 
 
-function callback(data){
-    let channel = new MessageAll(data);
+function setChat(data){
+    let channel = new MessageAll();
     channel.resetContent();
     channel.show(data);
+}
+
+function showUsers(data){
 }

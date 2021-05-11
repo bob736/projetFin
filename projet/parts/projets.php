@@ -32,9 +32,9 @@ else{
         </ul>
     </div><?php
     }
-    if($_SESSION["role"] === "super_admin"){?>
+    if(isset($_SESSION["role"]) && $_SESSION["role"] === "super_admin"){?>
         <div id="addProject"><i class="fas fa-plus"></i></div>
-        <script src="./js/utils/addProject.js"></script>
+        <script src="./js/utils/addProject.js" type="module"></script>
         <?php
     }
     ?>

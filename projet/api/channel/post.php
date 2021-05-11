@@ -12,7 +12,17 @@ $manager = new ChannelManager();
 switch($requestType) {
     case 'POST':
         $data = json_decode(file_get_contents('php://input'));
-        sendChannelMessage($manager, $data->message, $data->data);
+        if(isset($_GET,$_GET['action'])){
+            if($_GET['action'] === "new"){
+                echo "ok";
+                break;
+            }
+        }
+        else{
+            sendChannelMessage($manager, $data->message, $data->data);
+        }
+
+
     default:
         break;
 }

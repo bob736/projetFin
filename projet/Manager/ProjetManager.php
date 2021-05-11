@@ -111,4 +111,12 @@ class ProjetManager
         }
     }
 
+    public function addProject($name){
+        if($_SESSION["role"] === "super_admin"){
+            $conn = $this->db->prepare("INSERT INTO projet (name, link) VALUES (:name, :link)");
+            $conn->bindValue(":name", $name);
+            $conn->bindValue(":link", "link");
+            $conn->execute();
+        }
+    }
 }
