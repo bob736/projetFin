@@ -10,6 +10,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 use App\Traits\GlobalManager;
 use App\Manager\UserManager;
+use App\Entity\User;
 use App\Entity\Message;
 
 class ChannelManager
@@ -62,4 +63,22 @@ class ChannelManager
         $conn->execute();
     }
 
+    public function getUsers(int $id){
+        $conn = $this->db->prepare("SELECT * FROM projetuser INNER JOIN user ON projetuser.user_id = user.id WHERE projetuser.projet_id = :id");
+        $conn->bindValue(":id", $id);
+        if($conn->execute()){
+            $users = [];
+            $selected = $conn->fetchAll();
+            foreach($selected as $select){
+                $user = new User();
+                $user
+                    ->setId($select["user_id"])
+                    ->setName($select["name"])
+                    ->setMail($select["mail"])
+                    ->setBio($select["bio"]);
+                $users[] = $user;
+            }
+            return $users;
+        }
+    }
 }

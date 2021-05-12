@@ -1,12 +1,12 @@
 #chat {
     width: 60vw;
     height: 100%;
-    border: 1px solid black;
+    border-top: 1px solid black;
     position: relative;
     top: 0;
     left: 0;
     overflow-x: hidden;
-    background-color: #616A6B;
+    background-color: #ADE8F4;
 
 }
 
@@ -113,6 +113,7 @@
     position: relative;
     top: 0;
     display: inline-block;
+    color: #03045E;
 }
 
 .sent .data{
@@ -146,3 +147,20 @@
     align-items: flex-end;
 }
 
+#sendTo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    text-align: center;
+    font-size: 2rem;
+    height: 5vh;
+    background-color:#023E8A;
+    color: darkorange;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}

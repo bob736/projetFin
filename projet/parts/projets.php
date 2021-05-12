@@ -41,4 +41,5 @@ else{
 </li>
 <script src="./js/classes/Request.js" type="module"></script>
 <script src="./js/classes/Channel.js" type="module"></script>
+<script src="./js/classes/Users.js" type="module"></script>
 <script src="./js/utils/channelChat.js" type="module"></script>

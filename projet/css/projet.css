@@ -1,14 +1,13 @@
 #projet {
     width: 20vw;
     height: 100%;
-    border-right: 1px solid black;
     position: relative;
     left: 0;
     margin: 0;
-    border-bottom: 1px solid black;
+    border-top: 1px solid black;
     overflow: scroll;
     overflow-x: hidden;
-    background-color: #616A6B;
+    background-color: #023E8A;
 }
 
 #projet::-webkit-scrollbar{
@@ -26,7 +25,7 @@
 #projet a {
     text-decoration: none;
     font-size: 1.5rem;
-    color: #ff7e5f;
+    color: #03045E;
 }
 
 .projetCont{

@@ -16,6 +16,10 @@ switch($requestType) {
                 echo getMessage($manager, $_GET["channel"]);
                 break;
             }
+            if($_GET["action"] === "users"){
+                echo getUsers($manager, $_GET["id"]);
+                break;
+            }
         }
         else{
 
@@ -38,6 +42,20 @@ function getMessage(ChannelManager $manager, int $id){
             "date" => $message->getDate(),
             "sent" => $message->getSent()
         ];
+    }
+    return json_encode($return);
+}
+
+function getUsers(ChannelManager $manager, int $id){
+    $users = $manager->getUsers($id);
+    $return = [];
+    foreach($users as $user){
+        if($user->getId() !== $_SESSION["user1_id"]){
+            $return[] = [
+                "name" => $user->getName(),
+                "id" => $user->getId()
+            ];
+        }
     }
     return json_encode($return);
 }

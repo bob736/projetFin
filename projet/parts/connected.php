@@ -16,8 +16,7 @@ foreach($users as $user){
         if($_SESSION["user1_id"] !== $user->getId()){?>
             <li>
                 <div class="profile">
-                    <span id="name"><?php echo $user->getName() ?></span>
-                    <div id="online-detector">X</div><?php
+                    <span id="name"><?php echo $user->getName() ?></span><?php
                     info($user);
                     ?>
                 </div>

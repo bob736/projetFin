@@ -32,7 +32,7 @@
 <?php include "./parts/menu.php" ?>
 <ul id="cont">
     <?php require_once("./parts/projets.php") ?>
-    <li id="categories"></li>
+    <li id="channelUsers"></li>
     <li id="data">
         <div id="chat">
             <div id="showMessage"></div>
