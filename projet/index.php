@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="./css/categories.css">
     <link rel="stylesheet" href="./css/chat.css">
     <link rel="stylesheet" href="./css/online.css">
+    <link rel="stylesheet" href="./css/createProjectModal.css">
 </head>
 <body>
 
@@ -70,5 +71,5 @@
 <script src="js/classes/MessageSingle.js" type="module"></script>
 <script src="js/classes/MessageAll.js" type="module"></script>
 <script src="js/utils/privateMessage.js" type="module"></script>
-
+<script src="js/utils/getRepos.js" type="module"></script>
 </html>
