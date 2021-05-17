@@ -14,7 +14,7 @@ switch($requestType) {
         $data = json_decode(file_get_contents('php://input'));
         if(isset($_GET,$_GET['action'])){
             if($_GET['action'] === "new"){
-                echo "ok";
+                newChannel($manager,$data->id,$data->name);
                 break;
             }
         }
@@ -29,4 +29,8 @@ switch($requestType) {
 
 function sendChannelMessage(ChannelManager $manager, string $message, int $channel){
     $manager->sendMessage($message, $channel);
+}
+
+function newChannel(ChannelManager $manager, int $id, string $name){
+    $manager->addChannel($id,$name);
 }

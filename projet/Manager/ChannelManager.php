@@ -81,4 +81,11 @@ class ChannelManager
             return $users;
         }
     }
+
+    public function addChannel(int $id , string $name){
+        $conn = $this->db->prepare("INSERT INTO channel (name, projet_id) VALUES (:name, :id)");
+        $conn->bindValue(":name", $name);
+        $conn->bindValue(":id", $id);
+        $conn->execute();
+    }
 }

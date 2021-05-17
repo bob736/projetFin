@@ -1,7 +1,7 @@
 import {SendMessage} from "../classes/sendMessage.js";
 
 //Create an event on submit form element
-function sendMessageEvent(chatClasse,api, data = null,){
+function sendMessageEvent(chatClasse,api, data = null){
     let submit = document.querySelector("#sendMessageForm input[type=submit]");
     let chat = document.getElementById("showMessage");
 
@@ -33,7 +33,9 @@ function sendMessageFunction(data,api,chatClasse){
         //Scroll chat to bottom when a new message is sent
         let chat = document.getElementsByClassName(chatClasse)[0];
         setTimeout(()=>{
-            chat.scrollTop = chat.scrollHeight;
+            if(chat !== undefined){
+                chat.scrollTop = chat.scrollHeight;
+            }
         },1000);
 
     }

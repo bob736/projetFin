@@ -30,7 +30,7 @@ for(let link of channelLink){
         channelUserGet.get();
         chat.className = "channelMessage";
 
-        let parent = link.parentNode.parentNode.parentNode.getElementsByTagName("h1")[0].innerHTML;
+        let parent = link.parentNode.parentNode.parentNode.getElementsByTagName("h1")[0].innerText;
         channelName = parent + " => " + link.innerHTML;
     })
 }

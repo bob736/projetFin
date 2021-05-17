@@ -53,7 +53,7 @@ function timeOutRecurePrivateMessage(){
             privateMessageReqGet.get();
 
             //set a send message event on the input submit
-            sendMessageEvent("privateChat","privateMessage", user2);
+            sendMessageEvent("privateChat","privateMessage", user2, true);
         }
         timeOutRecurePrivateMessage();
     },1000)
@@ -76,9 +76,6 @@ function setCloseButton(){
         user2 = null;
         userSet = false;
         document.getElementById("chat").removeChild(this);
-
-        //Remove the event of the send button when the chat get closed
-        submit.removeEventListener("click", send);
         })
     document.getElementById("chat").append(icon)
 }

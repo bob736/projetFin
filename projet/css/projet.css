@@ -40,7 +40,7 @@
     text-align: center;
 }
 
-#addProject i:hover{
+i:hover{
     color: cadetblue;
     text-shadow: 2px 2px 2px blanchedalmond;
     cursor: pointer;

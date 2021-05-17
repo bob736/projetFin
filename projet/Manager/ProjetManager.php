@@ -53,7 +53,7 @@ class ProjetManager
             foreach($selected as $select){
                 $projet = new Projet();
                 //Get channel
-                $conn = $this->db->prepare("SELECT * FROM channel WHERE id = :id");
+                $conn = $this->db->prepare("SELECT * FROM channel WHERE projet_id = :id");
                 $conn->bindValue(":id", $select["projet_id"]);
                 $channels = [];
                 if($conn->execute()){
@@ -193,15 +193,49 @@ class ProjetManager
         }
     }
 
+    /**
+     * Make project admit
+     * @param int $id
+     */
     public function acceptProject(int $id){
         $conn = $this->db->prepare("UPDATE projetadmission SET statue = 1 WHERE projetadmission.projet_id = :id");
         $conn->bindValue(":id", $id);
         $conn->execute();
+
+        //Get id of the user that asked for the project
+        $conn = $this->db->prepare("SELECT user_id FROM projetadmission WHERE projet_id = :id");
+        $conn->bindValue(":id", $id);
+        $conn->execute();
+        $iduser = $conn->fetch()["user_id"];
+
+        //Make user admin of his project
+        $conn = $this->db->prepare("INSERT INTO projetadmin (projet_id, user_id) VALUES (:projid, :userid)");
+        $conn->bindValue(":projid", $id);
+        $conn->bindValue(":userid", $iduser);
+        $conn->execute();
     }
 
+    /**
+     * Delete ask for server
+     * @param int $id
+     */
     public function refuseProject(int $id){
         $conn = $this->db->prepare("DELETE FROM projet WHERE id= :id");
         $conn->bindValue(":id", $id);
         $conn->execute();
+    }
+
+    public function isAdmin(int $iduser, int $idserver){
+        $conn = $this->db->prepare("SELECT * FROM projetadmin WHERE projet_id = :idproj AND  user_id = :iduser");
+        $conn->bindValue(":idproj", $idserver);
+        $conn->bindValue(":iduser", $iduser);
+        if($conn->execute()){
+            if($conn->fetch()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
     }
 }
