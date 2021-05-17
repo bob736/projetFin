@@ -32,4 +32,10 @@ MessageAll.prototype.setFirstContent = function(content){
     this.parent.innerHTML = content;
 }
 
+MessageAll.prototype.showSingle = function(data){
+    let message = new MessageSingle(data);
+    message.setContent();
+    this.parent.append(message.div);
+}
+
 export {MessageAll};

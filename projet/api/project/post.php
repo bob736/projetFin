@@ -21,6 +21,9 @@ switch($requestType) {
             if($_GET["action"] === "admin"){
                 setProjectAdmin($manager, $data->id);
             }
+            if($_GET["action"] === "ask"){
+                askForProject($manager, $data);
+            }
         }
         break;
     default:
@@ -32,5 +35,12 @@ function addProject(ProjetManager $manager, string $name){
 }
 
 function setProjectAdmin(ProjetManager $manager, int $id){
+
+}
+
+function askForProject(ProjetManager $manager, array $data){
+    $projectName = $data[0];
+    $message = $data[1];
+    $manager->addProject($projectName, $message);
 
 }

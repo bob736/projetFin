@@ -8,28 +8,36 @@ require_once("./Manager/UserManager.php");
 use App\Manager\UserManager;
 
 $userManager = new UserManager();
-$users = $userManager->getFollowedUsers();
+if(isset($_SESSION["user1_id"])){
+    $users = $userManager->getFollowedUsers();
+}
+else{
+    $users = [];
+}
 
 
 foreach($users as $user){
     if($connected){
-        if($_SESSION["user1_id"] !== $user->getId()){?>
-            <li>
+        if(isset($_SESSION["user1_id"])){
+            if($_SESSION["user1_id"] !== $user->getId()){
+                ?>
+                <li>
                 <div class="profile">
                     <span id="name"><?php echo $user->getName() ?></span><?php
                     info($user);
                     ?>
                 </div>
-            </li><?php
+                </li><?php
+            }
         }
-    }
-    else{?>
-        <li>
-            <div class="profile">
-                <span id="name">Vous devez etre connecté pour voir les personnes en ligne</span>
-            </div>
-        </li><?php
-        break;
+        else{?>
+            <li>
+                <div class="profile">
+                    <span id="name">Vous devez etre connecté pour voir les personnes en ligne</span>
+                </div>
+            </li><?php
+            break;
+        }
     }
 }
 

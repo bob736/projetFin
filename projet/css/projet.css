@@ -78,3 +78,9 @@
 #divNewProjectForm input:focus {
     outline:none;
 }
+
+i[data-stat = "0"]:hover{
+    color: cadetblue;
+    text-shadow: 2px 2px 2px blanchedalmond;
+    cursor: pointer;
+}
