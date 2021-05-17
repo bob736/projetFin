@@ -116,7 +116,7 @@ class ProjetManager
             $conn = $this->db->prepare("INSERT INTO projet (name, link) VALUES (:name, :link)");
             $conn->bindValue(":name", $name);
             $conn->bindValue(":link", "link");
-            $conn->execute();
+            $conn->execute();s
         }
     }
 }
