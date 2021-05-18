@@ -17,7 +17,7 @@ switch($requestType) {
         $data = json_decode(file_get_contents('php://input'));
         if(isset($_GET, $_GET["action"])){
             if($_GET["action"] === "modif"){
-                modifProfile($userManager, $data->id, $data->name, $data->bio);
+                modifProfile($userManager, $data->id, $data->name, $data->bio, $data->link);
                 break;
             }
         }
@@ -34,8 +34,8 @@ function followUser(UserManager $manager, int $id){
     $manager->followUser($id);
 }
 
-function modifProfile(UserManager $manager, int $id, string $name, string $bio){
+function modifProfile(UserManager $manager, int $id, string $name, string $bio, string $link){
     if($id === $_SESSION["user1_id"]){
-        $manager->modifyUser(sanitize($name),sanitize($bio));
+        $manager->modifyUser(sanitize($name),sanitize($bio), sanitize($link));
     }
 }

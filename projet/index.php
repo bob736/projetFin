@@ -54,6 +54,7 @@
     </li>
     <li id="online">
         <ul>
+            <h1 class="usersTitle">Followed users</h1>
             <?php require_once("./parts/connected.php") ?>
         </ul>
     </li>

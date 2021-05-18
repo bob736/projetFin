@@ -162,11 +162,12 @@ class UserManager
      * @param string $name
      * @param string $bio
      */
-    public function modifyUser(string $name, string $bio){
-        $conn = $this->db->prepare("UPDATE user SET bio = :bio, name = :name WHERE id = :id");
+    public function modifyUser(string $name, string $bio, string $link){
+        $conn = $this->db->prepare("UPDATE user SET bio = :bio, name = :name, lienGithub = :link  WHERE id = :id");
         $conn->bindValue(":bio", $bio);
         $conn->bindValue(":name", $name);
         $conn->bindValue(":id", $_SESSION["user1_id"]);
+        $conn->bindValue(":link", $link);
         $conn->execute();
     }
 

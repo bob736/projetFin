@@ -12,6 +12,9 @@ let Profile = function(){
 
 //Show the profile page
 Profile.prototype.show = function(){
+    if(document.getElementById("profilePage") !== null){
+        return false;
+    }
     this.parent.appendChild(this.div);
     if(this.data.lien.length < 1){
         this.data.lien = "Non renseigné";
@@ -24,7 +27,7 @@ Profile.prototype.show = function(){
             <h2>Bio</h2>
             <div id="userBio">${this.data.bio}</div>
             <hr class="profileSeparation">
-            <div id="userLink">Lien Github : ${this.data.lien}</div>
+            <div id="userLink">Lien Github : <div>${this.data.lien}</div></div>
             
         </div>
         <div id="userProfileBot">
@@ -43,13 +46,13 @@ Profile.prototype.show = function(){
                 let arrayOfDiv = [];
                 arrayOfDiv.push(document.getElementById("userName"));
                 arrayOfDiv.push(document.getElementById("userBio"));
+                arrayOfDiv.push(document.querySelector("#userLink > div"));
                 for(let div of arrayOfDiv){
                     let input = document.createElement("input");
                     input.value = div.innerHTML;
                     input.name = div.id;
                     div.replaceWith(input);
                 }
-                let submit = document.createElement("div");
             }
 
             //When user click a second time to the modifie icon , then i send a requete to
@@ -71,7 +74,8 @@ Profile.prototype.show = function(){
 
                 let name = document.getElementById("userName").innerHTML;
                 let bio = document.getElementById("userBio").innerHTML;
-                reqModifProfile.setData({"name" : name, "bio" : bio, "id": this.data.id});
+                let link = document.querySelector("#userLink > div").innerHTML;
+                reqModifProfile.setData({"name" : name, "bio" : bio, "id": this.data.id, "link": link});
                 reqModifProfile.send();
             }
 

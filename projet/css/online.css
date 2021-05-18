@@ -45,3 +45,7 @@
     max-width: 5vw;
     overflow: hidden;
 }
+
+.usersTitle {
+    margin-bottom: 2rem;
+}

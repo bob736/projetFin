@@ -30,8 +30,9 @@ for(let link of channelLink){
         channelUserGet.get();
         chat.className = "channelMessage";
 
+        //Set header of chat to display 'servername : channel name'
         let parent = link.parentNode.parentNode.parentNode.getElementsByTagName("h1")[0].innerText;
-        channelName = parent + " => " + link.innerHTML;
+        channelName = parent + " : " + link.innerHTML;
     })
 }
 

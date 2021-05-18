@@ -17,7 +17,7 @@ Users.prototype.showData = function(){
 }
 
 Users.prototype.show = function(){
-    this.parent.innerHTML = "<h1>Project's users</h1>";
+    this.parent.innerHTML = "<h1 class='usersTitle'>Project's users</h1>";
     for(let user of this.data){
         let div = document.createElement("div");
         div.className = "channelUser";

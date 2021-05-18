@@ -5,7 +5,7 @@ import {setDivZindex} from "./fonctionUtils.js";
 import {removeDiv} from "./fonctionUtils.js";
 
 let profileReqGet = new Request("user/get.php?",callback);
-let profile = new Profile();
+
 
 let profileLinks = document.getElementsByClassName("profileLink");
 
@@ -27,14 +27,18 @@ function showProfile(d){
         removeDiv(document.getElementById("profilePage"));
     }
     catch(e){}
+    if(document.getElementById("profilePage") === null){
+        profileReqGet.get();
+    }
 
-    profileReqGet.get();
-    setDivZindex(1,profile.div);
 
 }
 
 //Callback of get() methode
 function callback(data){
+    let profile = new Profile();
+    setDivZindex(1,profile.div);
     profile.data = data;
+    console.log("ok");
     profile.show();
 }

@@ -19,8 +19,7 @@ else{
 foreach($users as $user){
     if($connected){
         if(isset($_SESSION["user1_id"])){
-            if($_SESSION["user1_id"] !== $user->getId()){
-                ?>
+            if($_SESSION["user1_id"] !== $user->getId()){?>
                 <li>
                 <div class="profile">
                     <span id="name"><?php echo $user->getName() ?></span><?php

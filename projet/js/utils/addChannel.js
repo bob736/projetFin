@@ -9,7 +9,7 @@ let conv = new MessageAll();
 
 let id = false;
 let submitEvent = false;
-
+let alreadySend = false;
 
 for(let add of addChannel){
     add.addEventListener("click", () => {
@@ -36,17 +36,19 @@ function callback(e){
 
 //Send request to api if the input value isnt empty
 function checkInput(){
-    if(conv.parent.className === "addChannelConv"){
-        if(input.value.length > 0){
-            if(id !== false){
-                let req = new Request("channel/post.php");
-                req.resetLink();
-                req.link += "?action=new";
-                req.setData({"name" : input.value, "id" : id });
-                req.send();
-                conv.showSingle({"pseudo" : "server", "message" : "Channel '" + input.value + "' bien ajouté. Relancez la page pour voir les changements ", "date" : getDate()});
+    if(!alreadySend){
+        if(conv.parent.className === "addChannelConv"){
+            if(input.value.length > 0){
+                if(id !== false){
+                    let req = new Request("channel/post.php");
+                    req.resetLink();
+                    req.link += "?action=new";
+                    req.setData({"name" : input.value, "id" : id });
+                    req.send();
+                    conv.showSingle({"pseudo" : "server", "message" : "Channel '" + input.value + "' bien ajouté. Relancez la page pour voir les changements ", "date" : getDate()});
+                    alreadySend = true;
+                }
             }
         }
     }
-
 }
