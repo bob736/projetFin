@@ -39,6 +39,7 @@ $adminFlag = false;
                 } ?>" data-id="<?= $projet->getId() ?>"></i><?php
             }
             if($admin){?>
+                <i data-id="<?= $projet->getId() ?>" class="fas fa-link inviteToServer"></i>
                 <i data-id="<?= $projet->getId() ?>" class="fas fa-plus addChannel"></i><?php
             }?></h1>
         <ul><?php
@@ -63,5 +64,6 @@ $adminFlag = false;
 <script src="./js/utils/projectAdmission.js" type="module"></script><?php
 }
 if($adminFlag){?>
-<script src="./js/utils/addChannel.js" type="module"></script><?php
+<script src="./js/utils/addChannel.js" type="module"></script>
+<script src="./js/utils/sendInvitation.js" type="module"></script><?php
 }

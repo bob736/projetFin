@@ -163,7 +163,7 @@ class ProjetManager
     }
 
     /**
-     * return Project's user already in ask stats
+     * Return Project's user already in ask stats
      * @return array
      */
     public function hasAskForProjec(){
@@ -181,6 +181,11 @@ class ProjetManager
         return $return;
     }
 
+    /**
+     * Return admission message of a selected project
+     * @param int $id
+     * @return array
+     */
     public function getAdmissionById(int $id){
         $conn = $this->db->prepare("SELECT user_id, message FROM projetadmission WHERE projet_id = :id");
         $conn->bindValue(":id", $id);
@@ -225,6 +230,12 @@ class ProjetManager
         $conn->execute();
     }
 
+    /**
+     * Return True is connected user is admin of the project
+     * @param int $iduser
+     * @param int $idserver
+     * @return bool
+     */
     public function isAdmin(int $iduser, int $idserver){
         $conn = $this->db->prepare("SELECT * FROM projetadmin WHERE projet_id = :idproj AND  user_id = :iduser");
         $conn->bindValue(":idproj", $idserver);
@@ -235,6 +246,43 @@ class ProjetManager
             }
             else{
                 return false;
+            }
+        }
+    }
+
+    public function getLink(int $id){
+        $link = substr(md5(rand()), 0, 300);
+        $date = mktime(date("H"), date("i"), date("s"), date("m"), date("d") + 7,date("Y"));
+        $conn = $this->db->prepare("INSERT INTO projetlink (link, projet_id, expiration) VALUES (:link, :id, :date)");
+        $conn->bindValue(":link", $link);
+        $conn->bindValue(":id", $id);
+        $conn->bindValue(":date", $date);
+        $conn->execute();
+        return $link;
+    }
+
+    public function checkLink($link){
+        $conn = $this->db->prepare("SELECT * FROM projetlink WHERE link = :link");
+        $conn->bindValue(":link", $link);
+        $conn->execute();
+        $info = $conn->fetch();
+        if(isset($info["id"])){
+            return $info["projet_id"];
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function checkLinkDuration(){
+        $conn = $this->db->prepare("SELECT * FROM projetlink");
+        $conn->execute();
+        $selected = $conn->fetchAll();
+        foreach($selected as $select){
+            if($select["expiration"] < mktime(date("H"), date("i"), date("s"), date("m"), date("d"),date("Y"))){
+                $conn = $this->db->prepare("DELETE FROM projetlink WHERE id = :id");
+                $conn->bindValue(':id', $select["id"]);
+                $conn->execute();
             }
         }
     }

@@ -20,9 +20,14 @@ switch($requestType) {
             }
             if($_GET["action"] === "admin"){
                 setProjectAdmin($manager, $data->id);
+                break;
             }
             if($_GET["action"] === "ask"){
                 askForProject($manager, $data);
+                break;
+            }
+            if($_GET["action"] === "link"){
+                checkLink($manager, $data->link);
             }
         }
         break;
@@ -31,7 +36,7 @@ switch($requestType) {
 }
 
 function addProject(ProjetManager $manager, string $name){
-    $manager->addProject($name);
+    $manager->addProject($name,"");
 }
 
 function setProjectAdmin(ProjetManager $manager, int $id){
@@ -42,5 +47,15 @@ function askForProject(ProjetManager $manager, array $data){
     $projectName = $data[0];
     $message = $data[1];
     $manager->addProject($projectName, $message);
+}
+
+function checkLink(ProjetManager $manager, string $link){
+    $result = $manager->checkLink($link);
+    if($result !== false){
+
+    }
+}
+
+function addUserToProject(ProjetManager $manager){
 
 }

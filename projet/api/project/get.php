@@ -15,13 +15,21 @@ $manager = new ProjetManager();
 switch($requestType) {
     case 'GET':
         if(isset($_GET["id"])){
-            $managerUser = new UserManager();
-            echo getProjetData($managerUser, $manager, $_GET["id"]);
-            break;
+            if(isset($_GET['action'])){
+                if($_GET['action'] === "link"){
+                    echo getlink($manager, $_GET["id"]);
+                    break;
+                }
+            }
+            else{
+                $managerUser = new UserManager();
+                echo getProjetData($managerUser, $manager, $_GET["id"]);
+                break;
+            }
         }
         else{
-
             echo hasAskForProject($manager);
+            break;
         }
         break;
     default:
@@ -55,3 +63,10 @@ function getProjetData(UserManager $usermanager, ProjetManager $manager, int $id
 
     return json_encode($return);
 }
+
+function getLink(ProjetManager $manager, int $id){
+    $link = $manager->getLink($id);
+    echo $manager->checkLink("test");
+    return json_encode($link);
+}
+
