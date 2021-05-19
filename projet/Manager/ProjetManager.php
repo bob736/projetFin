@@ -39,6 +39,18 @@ class ProjetManager
         return false;
     }
 
+    public function getProjet(int $id){
+        $conn = $this->db->prepare("SELECT * FROM projet WHERE id = :id");
+        $conn->bindValue(":id", $id);
+        $conn->execute();
+        $select = $conn->fetch();
+        $projet = new Projet();
+        $projet
+            ->setName($select["name"])
+            ->setId($select["id"]);
+        return $projet;
+    }
+
     /**
      * Get all project where user is admin
      * @param int $id
@@ -250,6 +262,11 @@ class ProjetManager
         }
     }
 
+    /**
+     * Return an invitation token for the server selected
+     * @param int $id
+     * @return false|string
+     */
     public function getLink(int $id){
         $link = substr(md5(rand()), 0, 300);
         $date = mktime(date("H"), date("i"), date("s"), date("m"), date("d") + 7,date("Y"));
@@ -261,12 +278,20 @@ class ProjetManager
         return $link;
     }
 
+    /**
+     * Check if an invitation token existe in database
+     * @param $link
+     * @return false|mixed
+     */
     public function checkLink($link){
         $conn = $this->db->prepare("SELECT * FROM projetlink WHERE link = :link");
         $conn->bindValue(":link", $link);
         $conn->execute();
         $info = $conn->fetch();
         if(isset($info["id"])){
+            $conn = $this->db->prepare("DELETE FROM projetlink WHERE link = :link");
+            $conn->bindValue(":link", $link);
+            $conn->execute();
             return $info["projet_id"];
         }
         else{
@@ -274,6 +299,9 @@ class ProjetManager
         }
     }
 
+    /**
+     * Function used by o2switch setup CRON to delete token expired
+     */
     public function checkLinkDuration(){
         $conn = $this->db->prepare("SELECT * FROM projetlink");
         $conn->execute();
@@ -285,5 +313,12 @@ class ProjetManager
                 $conn->execute();
             }
         }
+    }
+
+    public function addUserToProject(int $id){
+        $conn = $this->db->prepare("INSERT INTO projetuser (user_id, projet_id) VALUES (:userid, :projetid)");
+        $conn->bindValue(":userid", $_SESSION["user1_id"]);
+        $conn->bindValue(":projetid", $id);
+        $conn->execute();
     }
 }

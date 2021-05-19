@@ -28,6 +28,14 @@ switch($requestType) {
             }
         }
         else{
+            if(isset($_GET["action"])){
+                if($_GET['action'] === "checkToken"){
+                    if(isset($_GET["token"])){
+                        echo checkToken($manager, $_GET["token"]);
+                        break;
+                    }
+                }
+            }
             echo hasAskForProject($manager);
             break;
         }
@@ -66,7 +74,18 @@ function getProjetData(UserManager $usermanager, ProjetManager $manager, int $id
 
 function getLink(ProjetManager $manager, int $id){
     $link = $manager->getLink($id);
-    echo $manager->checkLink("test");
     return json_encode($link);
+}
+
+function checkToken(ProjetManager $manager, string $link){
+    $result = $manager->checkLink($link);
+    if($result !== false){
+        $server = $manager->getProjet($result);
+        $manager->addUserToProject($server->getId());
+        return json_encode(["check" => true, "server" => $server->getName()]);
+    }
+    else{
+        return json_encode(["check" => false]);
+    }
 }
 

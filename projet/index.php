@@ -71,4 +71,5 @@
 <script src="js/classes/MessageSingle.js" type="module"></script>
 <script src="js/classes/MessageAll.js" type="module"></script>
 <script src="js/utils/privateMessage.js" type="module"></script>
+<script src="js/utils/joinServer.js" type="module"></script>
 </html>

@@ -26,9 +26,6 @@ switch($requestType) {
                 askForProject($manager, $data);
                 break;
             }
-            if($_GET["action"] === "link"){
-                checkLink($manager, $data->link);
-            }
         }
         break;
     default:
@@ -47,13 +44,6 @@ function askForProject(ProjetManager $manager, array $data){
     $projectName = $data[0];
     $message = $data[1];
     $manager->addProject($projectName, $message);
-}
-
-function checkLink(ProjetManager $manager, string $link){
-    $result = $manager->checkLink($link);
-    if($result !== false){
-
-    }
 }
 
 function addUserToProject(ProjetManager $manager){
