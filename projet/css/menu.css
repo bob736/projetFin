@@ -2,7 +2,6 @@
     width: 100vw;
     height: 5vh;
     font-size: 1.7rem;
-    background-color: #03045E;
     color: #F2F4F4;
 
 }
@@ -17,7 +16,7 @@
     align-items: center;
     position: relative;
     z-index: 2;
-    background-color: #03045E;
+    background-color: #23272a;
 }
 
 #menu a{
