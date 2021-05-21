@@ -33,7 +33,7 @@ $adminFlag = false;
             $admin = false;
         }?>
         <div class="projetCont" >
-        <h1><?= $projet->getName()?><?php if($projet->getStat() === 0){?>
+        <h1 data-id="<?= $projet->getId() ?>"><?= $projet->getName()?><?php if($projet->getStat() === 0){?>
                 <i class="fas fa-question" data-stat = "<?php if(is_int($projet->getStat())){
                     echo $projet->getStat();
                 } ?>" data-id="<?= $projet->getId() ?>"></i><?php

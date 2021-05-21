@@ -73,4 +73,5 @@
 <script src="js/classes/MessageAll.js" type="module"></script>
 <script src="js/utils/privateMessage.js" type="module"></script>
 <script src="js/utils/joinServer.js" type="module"></script>
+<script src="js/utils/showChannel.js" type="module"></script>
 </html>
