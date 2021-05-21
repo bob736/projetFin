@@ -33,8 +33,8 @@ function showChannel(datas){
     for(let channel of Channels.childs){
         channel.div.addEventListener("click", () => {
             idFlag = channel.div.dataset.id;
-            chat.className = "channelMessage";
             console.log(idFlag);
+            chat.className = "channelMessage";
             interval(idFlag);
         })
     }
