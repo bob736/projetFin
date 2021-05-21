@@ -26,13 +26,14 @@
     <link rel="stylesheet" href="./css/categories.css">
     <link rel="stylesheet" href="./css/chat.css">
     <link rel="stylesheet" href="./css/online.css">
+    <link rel="stylesheet" href="./css/projectChannel.css">
 </head>
 <body>
 
 <?php include "./parts/menu.php" ?>
 <ul id="cont">
     <?php require_once("./parts/projets.php") ?>
-    <li id="channelUsers"></li>
+    <li id="channels"></li>
     <li id="data">
         <div id="chat">
             <div id="showMessage"></div>
@@ -73,5 +74,7 @@
 <script src="js/classes/MessageAll.js" type="module"></script>
 <script src="js/utils/privateMessage.js" type="module"></script>
 <script src="js/utils/joinServer.js" type="module"></script>
+<script src="js/classes/ChannelSingle.js" type="module"></script>
+<script src="js/classes/ChannelAll.js" type="module"></script>
 <script src="js/utils/showChannel.js" type="module"></script>
 </html>

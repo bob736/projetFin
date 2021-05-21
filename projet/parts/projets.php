@@ -42,11 +42,6 @@ $adminFlag = false;
                 <i data-id="<?= $projet->getId() ?>" class="fas fa-link inviteToServer"></i>
                 <i data-id="<?= $projet->getId() ?>" class="fas fa-plus addChannel"></i><?php
             }?></h1>
-        <ul><?php
-            foreach($projet->getChannels() as $channel){?>
-                <li><a href="#" data-id="<?= $channel->getId() ?>"><?= $channel->getName() ?></a></li><?php
-            }?>
-        </ul>
     </div><?php
     }
     if(isset($_SESSION["role"]) && $_SESSION["role"] === "super_admin"){?>

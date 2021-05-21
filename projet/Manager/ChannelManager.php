@@ -88,4 +88,13 @@ class ChannelManager
         $conn->bindValue(":id", $id);
         $conn->execute();
     }
+
+    public function getChannels(int $id){
+        $conn = $this->db->prepare("SELECT * FROM channel WHERE projet_id = :id");
+        $conn->bindValue(":id", $id);
+        if($conn->execute()){
+            $selected = $conn->fetchAll();
+            return $selected;
+        }
+    }
 }

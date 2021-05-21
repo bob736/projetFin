@@ -20,11 +20,15 @@ switch($requestType) {
                 echo getUsers($manager, $_GET["id"]);
                 break;
             }
+            if($_GET["action"] === "channels"){
+                if(isset($_GET["id"])){
+                    echo getChannels($manager, $_GET["id"]);
+                    break;
+                }
+                break;
+            }
         }
-        else{
-
-            break;
-        }
+        break;
     default:
         break;
 }
@@ -58,4 +62,8 @@ function getUsers(ChannelManager $manager, int $id){
         }
     }
     return json_encode($return);
+}
+
+function getChannels(ChannelManager $manager, int $id){
+    return json_encode($manager->getChannels($id));
 }
