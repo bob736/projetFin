@@ -12,23 +12,24 @@ $manager = new ChannelManager();
 switch($requestType) {
     case 'GET':
         if(isset($_GET['action'])){
-            if($_GET['action'] === "see"){
-                echo getMessage($manager, $_GET["channel"]);
-                break;
+            if($_GET['action'] === "see") {
+                if (isset($_GET["id"])) {
+                    echo getMessage($manager, $_GET["id"]);
+                    break;
+                }
+                else {
+                    break;
+                }
             }
             if($_GET["action"] === "users"){
                 echo getUsers($manager, $_GET["id"]);
                 break;
             }
             if($_GET["action"] === "channels"){
-                if(isset($_GET["id"])){
-                    echo getChannels($manager, $_GET["id"]);
-                    break;
-                }
+                echo getChannels($manager, $_GET["id"]);
                 break;
             }
         }
-        break;
     default:
         break;
 }

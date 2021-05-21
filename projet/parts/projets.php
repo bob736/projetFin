@@ -54,7 +54,6 @@ $adminFlag = false;
 <script src="./js/classes/Request.js" type="module"></script>
 <script src="./js/classes/Channel.js" type="module"></script>
 <script src="./js/classes/Users.js" type="module"></script>
-<script src="./js/utils/channelChat.js" type="module"></script>
 <?php if($ask){?>
 <script src="./js/utils/projectAdmission.js" type="module"></script><?php
 }

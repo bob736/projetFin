@@ -94,7 +94,8 @@ class ChannelManager
         $conn->bindValue(":id", $id);
         if($conn->execute()){
             $selected = $conn->fetchAll();
-            return $selected;
+            $selected["project_id"] = $id;
+            return [$selected];
         }
     }
 }

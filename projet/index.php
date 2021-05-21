@@ -77,4 +77,5 @@
 <script src="js/classes/ChannelSingle.js" type="module"></script>
 <script src="js/classes/ChannelAll.js" type="module"></script>
 <script src="js/utils/showChannel.js" type="module"></script>
+<script src="js/utils/channelChat.js" type="module"></script>
 </html>

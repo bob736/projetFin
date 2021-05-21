@@ -1,6 +1,7 @@
-let ChannelSingle = function () {
+let ChannelSingle = function (id) {
     this.div = document.createElement("div");
     this.div.className = "channelSingle";
+    this.div.dataset.id = id;
 }
 
 ChannelSingle.prototype.setData = function(data){
