@@ -53,9 +53,10 @@
         </div>
     </li>
     <li id="online">
-        <ul>
+        <ul><?php if($connected){?>
             <h1 class="usersTitle">Followed users</h1>
-            <?php require_once("./parts/connected.php") ?>
+            <?php require_once("./parts/connected.php");
+            }?>
         </ul>
     </li>
 </ul>
