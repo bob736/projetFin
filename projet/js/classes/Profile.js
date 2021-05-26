@@ -30,9 +30,6 @@ Profile.prototype.show = function(){
             <div id="userLink">Lien Github : <div>${this.data.lien}</div></div>
             
         </div>
-        <div id="userProfileBot">
-            
-        </div>
     `
 
     //If the Profile is the connected user's one then we can edit the profile page
