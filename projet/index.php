@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="./css/chat.css">
     <link rel="stylesheet" href="./css/online.css">
     <link rel="stylesheet" href="./css/projectChannel.css">
+    <link rel="stylesheet" href="./css/connection.css">
 </head>
 <body>
 
@@ -36,7 +37,44 @@
     <li id="channels"></li>
     <li id="data">
         <div id="chat">
-            <div id="showMessage"></div>
+            <div id="showMessage"><?php
+                if(!$connected){?>
+                <div id="form">
+                    <div class="formContent">
+                        <form action="./utils/connectFormCheck.php" method="post">
+                            <div>
+                                <input type="email" placeholder="email" name="mail">
+                            </div>
+                            <div>
+                                <input type="password" placeholder="pass" name="pass">
+                            </div>
+                            <div>
+                                <input class="buttonForm" type="submit" value="Connexion">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="formContent">
+                        <form action="./utils/inscription.php" method="post">
+                            <div>
+                                <input type="text" placeholder="name" name="name">
+                            </div>
+                            <div>
+                                <input type="email" placeholder="email" name="mail">
+                            </div>
+                            <div>
+                                <input type="password" placeholder="pass" name="pass">
+                            </div>
+                            <div>
+                                <input class="buttonForm" type="submit" value="Inscription">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                    <?php
+                }
+                ?>
+
+            </div>
             <div id="sendMessage">
                 <div id="sendMessageBox">
                     <div id="sendMessageForm">
@@ -77,4 +115,5 @@
 <script src="js/classes/ChannelSingle.js" type="module"></script>
 <script src="js/classes/ChannelAll.js" type="module"></script>
 <script src="js/utils/showChannel.js" type="module"></script>
+<script src="js/utils/fixButtonPosition.js"></script>
 </html>

@@ -10,9 +10,6 @@
                     <script src="js/utils/createProject.js" type="module"></script>
                     <?php
                 }
-                else{?>
-                    <li class="menu-item"><a href="./utils/connectStatueCheck.php">Login</a></li><?php
-                }
             ?>
         </ul>
     </div>

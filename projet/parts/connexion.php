@@ -8,18 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="formConnexion">
-        <form action="../utils/connectFormCheck.php" method="post">
-            <div>
-                <input type="email" placeholder="email" name="mail">
-            </div>
-            <div>
-                <input type="password" placeholder="pass" name="pass">
-            </div>
-            <div>
-                <input type="submit">
-            </div>
-        </form>
-    </div>
+
 </body>
 </html>

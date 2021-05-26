@@ -1,6 +1,5 @@
 import {Request} from "../classes/Request.js";
 import {MessageAll} from "../classes/MessageAll.js";
-import {getDate} from "./fonctionUtils.js";
 
 let projects = document.querySelectorAll("i[data-stat = '0']");
 

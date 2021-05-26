@@ -193,4 +193,12 @@ class UserManager
         }
     }
 
+    public function newUser(string $mail, string $pass, string $name){
+        $conn = $this->db->prepare("INSERT INTO user (name, pass, mail) VALUES (:name, :pass, :mail)");
+        $conn->bindValue(":name", $name);
+        $conn->bindValue(":mail", $mail);
+        $conn->bindValue(":pass", password_hash($pass,PASSWORD_DEFAULT));
+        $conn->execute();
+    }
+
 }

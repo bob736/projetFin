@@ -43,7 +43,6 @@ function timeOutRecurePrivateMessage(){
                 //So I open the api with url's parameters
                 privateMessageReqGet.link += "user=" + user2.toString();
                 userSet = true;
-                setCloseButton();
 
             }
 
@@ -57,26 +56,6 @@ function timeOutRecurePrivateMessage(){
     },1000)
 }
 
-//Set an icon to hide the private chat
-function setCloseButton(){
-    //remove existing close button
-    try{
-        icon.parentNode.removeChild(icon);
-    }
-    catch(e){}
-
-    //Create the button
-    icon = document.createElement("div");
-    icon.innerHTML = "<i id='closeButton' class=\"far fa-window-close\"></i>";
-    icon.addEventListener("click", function(){
-        document.getElementById("showMessage").innerHTML = "";
-        //Set user2 to null so the private chat is not showed
-        user2 = null;
-        userSet = false;
-        document.getElementById("chat").removeChild(this);
-        })
-    document.getElementById("chat").append(icon)
-}
 
 
 

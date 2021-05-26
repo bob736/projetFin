@@ -1,7 +1,6 @@
 import {Request} from "../classes/Request.js";
 import {MessageAll} from "../classes/MessageAll.js";
 import {getDate} from "./fonctionUtils.js";
-import {sendMessageFunction} from "./sendMessageFunc.js";
 
 let link = document.getElementById("joinServer");
 let conv = new MessageAll();
