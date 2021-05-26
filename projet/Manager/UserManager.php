@@ -1,6 +1,11 @@
 <?php
 
+
+
 namespace App\Manager;
+
+require_once $_SERVER["DOCUMENT_ROOT"] . "/utils/function.php";
+
 use App\Traits\GlobalManager;
 use App\Entity\User;
 

@@ -7,11 +7,11 @@
     if(isset($_POST, $_POST["mail"], $_POST["pass"])){
         $userManager = new UserManager();
         $mail = sanitize($_POST["mail"]);
-        $pass = sanitize($_POST["pass"]);
+        $pass = $_POST["pass"];
         //Return User object or null if no user match with $mail
         $user = $userManager->getUserByMail($mail);
         if(!is_null($user)){
-            if($user->getPass() === $pass){
+            if(password_verify($pass,$user->getPass())){
                 $_SESSION["user1_id"] = $user->getId();
                 $_SESSION["connected"] = true;
                 $_SESSION["role"] = $user->getRole();

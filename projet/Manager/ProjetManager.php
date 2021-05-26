@@ -119,14 +119,16 @@ class ProjetManager
                     $conn->bindValue(":id", $select["id"]);
                     $conn->execute();
                     $state = $conn->fetch();
+                    if($state !== false){
+                        $projet
+                            ->setStat($state["statue"])
+                            ->setName($select["name"])
+                            ->setLink($select["link"])
+                            ->setId($select["id"])
+                            ->setChannels($channels);
+                        $projets[] = $projet;
+                    }
 
-                    $projet
-                        ->setStat($state["statue"])
-                        ->setName($select["name"])
-                        ->setLink($select["link"])
-                        ->setId($select["id"])
-                        ->setChannels($channels);
-                    $projets[] = $projet;
                 }
                 return $projets;
             }
