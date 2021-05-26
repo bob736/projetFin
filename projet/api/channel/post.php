@@ -28,9 +28,9 @@ switch($requestType) {
 }
 
 function sendChannelMessage(ChannelManager $manager, string $message, int $channel){
-    $manager->sendMessage($message, $channel);
+    $manager->sendMessage(sanitize($message), $channel);
 }
 
 function newChannel(ChannelManager $manager, int $id, string $name){
-    $manager->addChannel($id,$name);
+    $manager->addChannel($id,sanitize($name));
 }

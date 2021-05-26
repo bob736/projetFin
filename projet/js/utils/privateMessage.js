@@ -6,10 +6,8 @@ const privateMessageReqGet = new Request("privateMessage/get.php?", callback);
 const userReqGet = new Request("user/get.php?", setUserPrivateMessageData)
 
 const form = document.getElementById("sendMessageForm");
-const submit = form.getElementsByTagName("input")[1];
 let chat = document.getElementById("showMessage");
 
-let scrollFlag = true;
 let scrollPostion;
 
 let user2 = null;

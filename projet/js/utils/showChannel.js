@@ -12,7 +12,9 @@ let chat = document.getElementById("showMessage");
 
 let scrollPosition;
 let idFlag = -1;
+let channelName = "loading";
 
+//Add request trigger on project's name to show channels of selected project
 for(let project of projects){
     project.addEventListener("click", () => {
         reqGet.resetLink();
@@ -21,6 +23,7 @@ for(let project of projects){
     })
 }
 
+//Show channel of a selected project
 function showChannel(datas){
     let Channels = new ChannelAll()
     for(let data of datas){
@@ -33,21 +36,23 @@ function showChannel(datas){
     for(let channel of Channels.childs){
         channel.div.addEventListener("click", () => {
             idFlag = channel.div.dataset.id;
-            console.log(idFlag);
             chat.className = "channelMessage";
+            channelName = channel.div.innerText;
             interval(idFlag);
         })
     }
 }
 
+//Set chat
 function setChat(data){
     let channel = new MessageAll();
     channel.resetContent();
-    channel.setFirstContent("<div id='sendTo'>" + 1 + "</div>");
+    channel.setFirstContent("<div id='sendTo'>" + channelName + "</div>");
     channel.show(data);
     chat.scrollTop = scrollPosition;
 }
 
+//Set message send event and
 function interval(id){
     setTimeout(()=>{
         if(chat.className === "channelMessage" && idFlag === id){

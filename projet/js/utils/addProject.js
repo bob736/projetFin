@@ -31,7 +31,6 @@ addProject.addEventListener("click", (e)=>{
         let name = input.value;
         if(name.length > 0){
             removeDiv(document.getElementById("divNewProjectForm"));
-            console.log(name);
             reqNewProject.resetLink();
             reqNewProject.link += "?action=new";
             reqNewProject.setData({"name": name});

@@ -59,3 +59,7 @@ body {
 ::-webkit-scrollbar-corner {
     background: transparent;
 }
+
+h1:hover{
+    cursor: pointer;
+}

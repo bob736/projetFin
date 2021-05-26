@@ -9,7 +9,10 @@ function sendMessageEvent(chatClasse,api, data = null){
     let submitClone = submit.cloneNode(true);
     submit.parentNode.replaceChild(submitClone,submit);
     if(chat.className === chatClasse) {
-        submitClone.addEventListener("click", sendMessageFunction.bind(event,data,api,chatClasse));
+        submitClone.addEventListener("click",(e) => {
+            e.preventDefault();
+            sendMessageFunction(data,api,chatClasse);
+        });
     }
 }
 //Create a sendMessage object that will send the value of the form input element

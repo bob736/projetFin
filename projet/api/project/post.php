@@ -32,8 +32,8 @@ switch($requestType) {
         break;
 }
 
-function addProject(ProjetManager $manager, string $name){
-    $manager->addProject($name,"");
+function addProject(ProjetManager $manager, string $name = ""){
+    $manager->addProject(sanitize($name),sanitize($name));
 }
 
 function setProjectAdmin(ProjetManager $manager, int $id){
@@ -43,7 +43,7 @@ function setProjectAdmin(ProjetManager $manager, int $id){
 function askForProject(ProjetManager $manager, array $data){
     $projectName = $data[0];
     $message = $data[1];
-    $manager->addProject($projectName, $message);
+    $manager->addProject(sanitize($projectName), sanitize($message));
 }
 
 function addUserToProject(ProjetManager $manager){

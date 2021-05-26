@@ -59,7 +59,6 @@ Profile.prototype.show = function(){
             //my api that will Update user's information
             else{
                 this.userModifFlag = false;
-                console.log("ok");
                 let arrayOfInput = document.querySelectorAll("#userProfileTop input");
                 for(let input of arrayOfInput){
                     let div = document.createElement("div");

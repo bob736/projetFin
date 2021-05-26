@@ -5,7 +5,6 @@ import {getDate} from "./fonctionUtils.js";
 let projects = document.querySelectorAll("i[data-stat = '0']");
 
 for(let project of projects){
-    console.log(project);
     project.addEventListener("click", (e) => {
         e.preventDefault();
         let request = new Request("project/get.php", callback);
