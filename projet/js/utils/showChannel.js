@@ -25,10 +25,13 @@ for(let project of projects){
 
 //Show channel of a selected project
 function showChannel(datas){
+    //Need array conversion to use "for of"
+    datas = Object.values(datas[0]);
+    datas.pop();
     let Channels = new ChannelAll()
     for(let data of datas){
         let child = new ChannelSingle(data["project_id"]);
-        child.setData(data[0]);
+        child.setData(data);
         child.addToDom();
         Channels.childs.push(child);
     }
