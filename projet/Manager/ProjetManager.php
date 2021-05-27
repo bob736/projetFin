@@ -318,9 +318,21 @@ class ProjetManager
     }
 
     public function addUserToProject(int $id){
-        $conn = $this->db->prepare("INSERT INTO projetuser (user_id, projet_id) VALUES (:userid, :projetid)");
-        $conn->bindValue(":userid", $_SESSION["user1_id"]);
-        $conn->bindValue(":projetid", $id);
-        $conn->execute();
+        $conn = $this->db->prepare("SELECT user_id FROM projetuser WHERE projet_id = :id AND user_id = :iduser");
+        $conn->bindValue(":id", $id);
+        $conn->bindValue(":iduser", $_SESSION["user1_id"]);
+        if($conn->execute()){
+            if(!$conn->fetch()){
+                $conn = $this->db->prepare("INSERT INTO projetuser (user_id, projet_id) VALUES (:userid, :projetid)");
+                $conn->bindValue(":userid", $_SESSION["user1_id"]);
+                $conn->bindValue(":projetid", $id);
+                $conn->execute();
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        return false;
     }
 }

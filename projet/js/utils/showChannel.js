@@ -13,12 +13,15 @@ let chat = document.getElementById("showMessage");
 let scrollPosition;
 let idFlag = -1;
 let channelName = "loading";
+let projectId;
+
 
 //Add request trigger on project's name to show channels of selected project
 for(let project of projects){
     project.addEventListener("click", () => {
         reqGet.resetLink();
         reqGet.link += "?action=channels&id=" + project.dataset.id;
+        projectId = project.dataset.id;
         reqGet.get();
     })
 }
@@ -28,7 +31,7 @@ function showChannel(datas){
     //Need array conversion to use "for of"
     datas = Object.values(datas[0]);
     datas.pop();
-    let Channels = new ChannelAll()
+    let Channels = new ChannelAll(projectId);
     for(let data of datas){
         let child = new ChannelSingle(data["project_id"]);
         child.setData(data);

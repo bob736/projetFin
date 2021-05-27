@@ -8,6 +8,26 @@ const userReqGet = new Request("user/get.php?", setUserPrivateMessageData)
 const form = document.getElementById("sendMessageForm");
 let chat = document.getElementById("showMessage");
 
+let title = document.getElementById("usersDisplay");
+
+//MutationObserver is an object I use to catch innerHTML change on DOM element
+let observer = new MutationObserver(function() {
+    //Set a event on every private chat links
+    let links = document.getElementsByClassName("chatLink");
+    for(let link of links){
+        link.addEventListener("click", function(e){
+            e.preventDefault();
+
+            //set user2 to selected user's id
+            user2 = link.dataset.id;
+            userReqGet.resetLink();
+            userReqGet.link += "user=" + user2;
+            chat.className = "privateChat";
+            userSet = false;
+        })
+    }
+})
+
 let scrollPostion;
 
 let user2 = null;
@@ -16,20 +36,6 @@ let user2name = "";
 
 let icon = null;
 
-//Set a event on every private chat links
-let links = document.getElementsByClassName("chatLink");
-for(let link of links){
-    link.addEventListener("click", function(e){
-        e.preventDefault();
-
-        //set user2 to selected user's id
-        user2 = link.dataset.id;
-        userReqGet.resetLink();
-        userReqGet.link += "user=" + user2;
-        chat.className = "privateChat";
-        userSet = false;
-    })
-}
 
 
 //Time out to show private message between 2 users
@@ -80,4 +86,5 @@ function setUserPrivateMessageData(result){
     form.getElementsByTagName("input")[0].placeholder = "Envoyer un message a " + user2name;
 }
 
+observer.observe(title, {subtree: true, childList: true});
 timeOutRecurePrivateMessage();

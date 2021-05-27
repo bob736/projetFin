@@ -1,6 +1,6 @@
 let ChannelAll = function(id){
-    this.id = id;
     this.parent = document.getElementById("channels");
+    this.parent.dataset.id = id;
     this.childs = [];
 }
 

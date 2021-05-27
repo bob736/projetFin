@@ -30,6 +30,12 @@ switch($requestType) {
                 echo getUser(intval($_GET["user"]), $userManager);
                 break;
             }
+            break;
+        }
+        if(isset($_GET["action"])){
+            if($_GET["action"] === "followed"){
+                echo getFollowedUser($userManager);
+            }
         }
     default:
         break;
@@ -64,4 +70,16 @@ function getFollow(UserManager $manager, int $id){
         "follow" => $manager->getFollow($id),
         "id" => $id,
     ]);
+}
+
+function getFollowedUser(UserManager $manager){
+    $users = $manager->getFollowedUser();
+    $return = [];
+    foreach($users as $user){
+        $return[] = [
+            "name" => $user->getName(),
+            "id" => $user->getId()
+        ];
+    }
+    return json_encode($return);
 }

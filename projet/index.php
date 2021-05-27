@@ -60,9 +60,9 @@
             </div>
         </div>
     </li>
-    <li id="online">
+    <li id="users">
         <ul><?php if($connected){?>
-            <h1 class="usersTitle">Followed users</h1>
+            <h1 class="title" id="usersDisplay">Followed users <i class="fas fa-exchange-alt"></i></h1>
             <?php require_once("./parts/connected.php");
             }?>
         </ul>
@@ -73,7 +73,6 @@
 <script src="js/utils/fonctionUtils.js" type="module"></script>
 <script src="js/utils/infoClick.js"></script>
 <script src="js/classes/Profile.js" type="module"></script>
-<script src="js/utils/profileClick.js" type="module"></script>
 <script src="js/classes/Request.js" type="module"></script>
 <script src="js/classes/sendMessage.js" type="module"></script>
 <script src="js/utils/sendMessageFunc.js" type="module"></script>
@@ -84,5 +83,5 @@
 <script src="js/classes/ChannelSingle.js" type="module"></script>
 <script src="js/classes/ChannelAll.js" type="module"></script>
 <script src="js/utils/showChannel.js" type="module"></script>
-<script src="js/utils/fixButtonPosition.js"></script>
+<script src="js/utils/changeUsersDisplay.js" type="module"></script>
 </html>

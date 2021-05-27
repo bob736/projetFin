@@ -81,8 +81,12 @@ function checkToken(ProjetManager $manager, string $link){
     $result = $manager->checkLink($link);
     if($result !== false){
         $server = $manager->getProjet($result);
-        $manager->addUserToProject($server->getId());
-        return json_encode(["check" => true, "server" => $server->getName()]);
+        if($manager->addUserToProject($server->getId())){
+            return json_encode(["check" => true, "server" => $server->getName()]);
+        }
+        else{
+            return json_encode(["check" => false]);
+        }
     }
     else{
         return json_encode(["check" => false]);

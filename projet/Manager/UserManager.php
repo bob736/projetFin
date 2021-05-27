@@ -205,5 +205,22 @@ class UserManager
         $conn->bindValue(":pass", password_hash($pass,PASSWORD_DEFAULT));
         $conn->execute();
     }
+    
+    public function getFollowedUser(){
+        $conn = $this->db->prepare("SELECT u.id, u.name FROM user as u INNER JOIN userfollow ON user2_id = u.id WHERE user1_id = :id");
+        $conn->bindValue(":id", $_SESSION["user1_id"]);
+        $users = [];
+        if($conn->execute()){
+            $selected = $conn->fetchAll();
+            foreach ($selected as $select){
+                $user = new User();
+                $user
+                    ->setId($select["id"])
+                    ->setName($select["name"]);
+                $users[] = $user;
+            }
+        }
+        return $users;
+    }
 
 }

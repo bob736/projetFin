@@ -20,9 +20,16 @@ switch($requestType) {
                 else {
                     break;
                 }
+                break;
             }
             if($_GET["action"] === "users"){
-                echo getUsers($manager, $_GET["id"]);
+                if(isset($_GET["id"])){
+                    echo getUsers($manager, intval($_GET["id"]));
+                    break;
+                }
+                else{
+                    echo json_encode([0 => false]);
+                }
                 break;
             }
             if($_GET["action"] === "channels"){

@@ -1,4 +1,4 @@
-#online {
+#users {
     width: 10vw;
     height: 100%;
     position: absolute;
@@ -9,14 +9,14 @@
     text-shadow: 2px 2px 2px rgba(128, 128, 128, 1);
 }
 
-#online ul {
+#users ul {
     position: relative;
     top: 5%;
     list-style: none;
     text-align: center;
 }
 
-#online .profile{
+#users .profile{
     position: relative;
     left: 5%;
     width: 80%;
@@ -25,7 +25,7 @@
     font-size: 2rem;
 }
 
-#online #online-detector {
+#users #online-detector {
     display: none;
 }
 
@@ -45,6 +45,7 @@
     overflow: hidden;
 }
 
-.usersTitle {
+.title {
+    margin-top: 2rem;
     margin-bottom: 2rem;
 }

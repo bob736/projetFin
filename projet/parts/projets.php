@@ -24,7 +24,8 @@ $adminFlag = false;
 
 ?>
 
-<li id="projet"><?php
+<li id="projet">
+    <h1 class="title">Projects</h1><?php
     foreach ($projets as $projet){
         if($manager->isAdmin($_SESSION["user1_id"],$projet->getId())){
             $admin = true;
@@ -42,7 +43,7 @@ $adminFlag = false;
                 <i data-id="<?= $projet->getId() ?>" class="fas fa-link inviteToServer"></i>
                 <i data-id="<?= $projet->getId() ?>" class="fas fa-plus addChannel"></i><?php
             }
-            else{if(!$ask){?>
+            else{if(!$admin && !$ask){?>
                 <i data-id="<?= $projet->getId() ?>" class="fas fa-user-shield askForAdmin"></i><?php
             }}?></h1>
     </div><?php
