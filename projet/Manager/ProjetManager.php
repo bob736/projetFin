@@ -335,4 +335,10 @@ class ProjetManager
         }
         return false;
     }
+
+    public function deleteProject(int $id){
+        $conn = $this->db->prepare("DELETE FROM projet WHERE id = :id");
+        $conn->bindValue(":id", $id);
+        $conn->execute();
+    }
 }

@@ -63,3 +63,7 @@ body {
 h1:hover{
     cursor: pointer;
 }
+
+i{
+    z-index: 10;
+}

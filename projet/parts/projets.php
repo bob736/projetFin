@@ -24,8 +24,10 @@ $adminFlag = false;
 
 ?>
 
-<li id="projet">
-    <h1 class="title">Projects</h1><?php
+<li id="projet"><?
+    if(!empty($projets)){?>
+        <h1 class="title">Projects</h1><?php
+    }
     foreach ($projets as $projet){
         if($manager->isAdmin($_SESSION["user1_id"],$projet->getId())){
             $admin = true;
@@ -39,13 +41,17 @@ $adminFlag = false;
                     echo $projet->getStat();
                 } ?>" data-id="<?= $projet->getId() ?>"></i><?php
             }
-            if($admin){?>
+            if($admin || $ask){?>
                 <i data-id="<?= $projet->getId() ?>" class="fas fa-link inviteToServer"></i>
                 <i data-id="<?= $projet->getId() ?>" class="fas fa-plus addChannel"></i><?php
             }
             else{if(!$admin && !$ask){?>
                 <i data-id="<?= $projet->getId() ?>" class="fas fa-user-shield askForAdmin"></i><?php
-            }}?></h1>
+            }}?>
+            </h1><?php
+            if($ask){?>
+            <i class="far fa-trash-alt delete"></i><?php
+            }?>
     </div><?php
     }
     if(isset($_SESSION["role"]) && $_SESSION["role"] === "super_admin"){?>

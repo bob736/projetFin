@@ -26,6 +26,10 @@ switch($requestType) {
                 askForProject($manager, $data);
                 break;
             }
+            if($_GET["action"] === "delete"){
+                deleteProject($manager, $data->id);
+                break;
+            }
         }
         break;
     default:
@@ -48,4 +52,8 @@ function askForProject(ProjetManager $manager, array $data){
 
 function addUserToProject(ProjetManager $manager){
 
+}
+
+function deleteProject(ProjetManager $manager, int $id){
+    $manager->deleteProject($id);
 }
