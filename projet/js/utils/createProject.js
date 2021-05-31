@@ -36,6 +36,7 @@ function callback(datas){
         response = [];
         let createProject = new MessageAll();
         createProject.resetContent();
+        createProject.setFirstContent("<div id='sendTo'>Create project</div>");
         createProject.parent.className = "createServeurChat";
 
         //If user already ask for a project then he cant ask for an other one

@@ -9,20 +9,27 @@
         $mail = sanitize($_POST["mail"]);
         $pass = $_POST["pass"];
         //Return User object or null if no user match with $mail
-        $user = $userManager->getUserByMail($mail);
-        if(!is_null($user)){
-            if(password_verify($pass,$user->getPass())){
-                $_SESSION["user1_id"] = $user->getId();
-                $_SESSION["connected"] = true;
-                $_SESSION["role"] = $user->getRole();
-                header("Location: ../index.php");
+        if(strlen($mail) > 0){
+            $user = $userManager->getUserByMail($mail);
+            if(!is_null($user)){
+                if(password_verify($pass,$user->getPass())){
+                    $_SESSION["user1_id"] = $user->getId();
+                    $_SESSION["connected"] = true;
+                    $_SESSION["role"] = $user->getRole();
+                    header("Location: ../index.php");
+                }
+                else{
+                    header("Location: ../index.php");
+                    echo "Mauvais MDP";
+                }
             }
             else{
-                echo "Mauvais MDP";
+                header("Location: ../index.php");
+                echo "Mauvais Mail";
             }
         }
         else{
-            echo "Mauvais Mail";
+            header("Location: ../index.php");
         }
     }
 ?>

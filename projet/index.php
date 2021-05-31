@@ -90,4 +90,6 @@
 <script src="js/utils/connexionChange.js"></script>
 <script src="js/utils/resetInput.js"></script>
 <script src="js/utils/showInput.js" type="module"></script>
+<script src="js/utils/showProfile.js" type="module"></script>
+<script src="js/utils/help.js" type="module"></script>
 </html>

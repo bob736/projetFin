@@ -12,7 +12,7 @@
                 <input class="buttonForm" type="submit" value="Connexion">
             </div>
             <div>
-                <span class="changeForm">INSCRIPTION</span>
+                <span id="connect" class="changeForm">INSCRIPTION</span>
             </div>
         </form>
     </div>

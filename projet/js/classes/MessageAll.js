@@ -24,14 +24,17 @@ MessageAll.prototype.show = function(data){
     }
 }
 
+//Reset chat
 MessageAll.prototype.resetContent = function(user){
     this.parent.innerHTML = "";
 }
 
+//Set first content usualy channel name
 MessageAll.prototype.setFirstContent = function(content){
     this.parent.innerHTML = content;
 }
 
+//Function to show a single message
 MessageAll.prototype.showSingle = function(data){
     let message = new MessageSingle(data);
     message.setContent();

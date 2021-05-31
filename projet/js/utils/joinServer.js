@@ -14,6 +14,7 @@ link.addEventListener("click", (e) => {
     let submit = document.querySelector("input[type=submit]");
     e.preventDefault();
     conv.resetContent();
+    conv.setFirstContent("<div id='sendTo'>Join server</div>");
     conv.parent.className = "joinServerConv";
     conv.showSingle({"pseudo": "server", "message": "Token d'invitation ?", "date": getDate()});
 

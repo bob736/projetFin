@@ -16,6 +16,7 @@ Users.prototype.showData = function(){
     console.log(this.data);
 }
 
+//Show user's names and add event on click to show icons (message and profile)
 Users.prototype.show = function(){
     this.parent.innerHTML = "<h1 class='usersTitle'>Project's users</h1>";
     for(let user of this.data){
@@ -47,7 +48,7 @@ Users.prototype.show = function(){
         })
     }
 
-    function showProfile(d){
+    function showProfile(){
         resetDataDivZindex("data");
         //If a profile is already showed then it's deleted
         try{

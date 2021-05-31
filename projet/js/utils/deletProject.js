@@ -4,6 +4,7 @@ let deleteReq = new Request("project/post.php");
 
 let deletes = document.getElementsByClassName("delete");
 
+//Delet project when click on icon
 for(let delet of deletes){
     delet.addEventListener("click", () => {
         console.log(delet.parentNode)
