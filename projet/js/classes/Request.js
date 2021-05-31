@@ -20,8 +20,8 @@ Request.prototype.send = function (){
 }
 
 //Send request and execute callback function with result (this.onload)
-Request.prototype.get = function () {
-    this.xhr.open("GET", this.link);
+Request.prototype.get = function (link = this.link) {
+    this.xhr.open("GET", link);
     this.xhr.setRequestHeader('Content-Type', 'application/json');
     this.xhr.send();
     this.xhr.onload = () => {

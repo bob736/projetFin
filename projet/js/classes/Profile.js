@@ -27,7 +27,7 @@ Profile.prototype.show = function(){
             <h2>Bio</h2>
             <div id="userBio">${this.data.bio}</div>
             <hr class="profileSeparation">
-            <div id="userLink">Pseudo github : <div>${this.data.lien}</div></div>
+            <div id="userLink">Lien github : <a href="https://github.com/${this.data.lien}/">${this.data.lien}</a></div>
             
         </div>
     `
@@ -44,11 +44,11 @@ Profile.prototype.show = function(){
                 arrayOfDiv.push(document.getElementById("userName"));
                 arrayOfDiv.push(document.getElementById("userBio"));
                 arrayOfDiv.push(document.querySelector("#userLink > div"));
-                for(let div of arrayOfDiv){
+                for(let div = 0; div < arrayOfDiv.length ; div++){
                     let input = document.createElement("input");
-                    input.value = div.innerHTML;
-                    input.name = div.id;
-                    div.replaceWith(input);
+                    input.value = arrayOfDiv[div].innerHTML;
+                    input.name = arrayOfDiv[div].id;
+                    arrayOfDiv[div].replaceWith(input);
                 }
             }
 

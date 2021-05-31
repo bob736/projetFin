@@ -53,13 +53,17 @@ $adminFlag = false;
             }}
             if($ask){?>
             <i class="far fa-trash-alt delete"></i><?php
-            }?>
+            } ?>
+        <i data-id="<?= $projet->getId() ?>" class='help fas fa-info-circle infoServe'></i>
     </div><?php
     }
     if(isset($_SESSION["role"]) && $_SESSION["role"] === "super_admin"){?>
         <div id="addProject"><i class="fas fa-plus"></i></div>
         <script src="./js/utils/addProject.js" type="module"></script>
         <?php
+    }
+    if(!empty($projets)){?>
+        <script src="./js/utils/projectInfo.js" type="module"></script><?php
     }
     ?>
 </li>

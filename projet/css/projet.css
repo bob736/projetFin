@@ -84,3 +84,7 @@ i[data-stat = "0"]:hover{
     text-shadow: 2px 2px 2px blanchedalmond;
     cursor: pointer;
 }
+
+.projetCont i {
+    font-size: 1.6rem;
+}

@@ -3,11 +3,12 @@ import {MessageAll} from "../classes/MessageAll.js";
 let helps = document.getElementsByClassName("help");
 
 for(let help of helps){
-    help.addEventListener("click", (e) => {
-        console.log("ok");
-        e.preventDefault();
-        callback();
-    })
+    if(!help.className.includes("infoServe")){
+        help.addEventListener("click", (e) => {
+            e.preventDefault();
+            callback();
+        })
+    }
 }
 
 //Show help messages

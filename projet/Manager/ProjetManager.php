@@ -344,4 +344,13 @@ class ProjetManager
 
     public function checkAsk(int $id){
     }
+
+    public function getProjectLink(int $id){
+        $conn = $this->db->prepare("SELECT link FROM projet WHERE id = :id");
+        $conn->bindValue(":id", $id);
+
+        if($conn->execute()){
+            return $conn->fetch();
+        }
+    }
 }
