@@ -20,12 +20,16 @@ switch($requestType) {
                     echo getlink($manager, $_GET["id"]);
                     break;
                 }
+                if($_GET["action"] === "check"){
+                    echo checkAsk($manager, $_GET["id"]);
+                }
             }
             else{
                 $managerUser = new UserManager();
                 echo getProjetData($managerUser, $manager, $_GET["id"]);
                 break;
             }
+
         }
         else{
             if(isset($_GET["action"])){
@@ -93,3 +97,6 @@ function checkToken(ProjetManager $manager, string $link){
     }
 }
 
+function checkAsk(ProjetManager $manager, int $id){
+    $result = $manager->checkAsk($id);
+}

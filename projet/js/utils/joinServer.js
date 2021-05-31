@@ -9,6 +9,7 @@ let input = document.querySelector("input[type=text]");
 let chat = document.getElementById("showMessage");
 let token = false;
 
+//Ask for invitation token
 link.addEventListener("click", (e) => {
     let submit = document.querySelector("input[type=submit]");
     e.preventDefault();

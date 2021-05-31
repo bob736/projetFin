@@ -341,4 +341,7 @@ class ProjetManager
         $conn->bindValue(":id", $id);
         $conn->execute();
     }
+
+    public function checkAsk(int $id){
+    }
 }
