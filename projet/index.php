@@ -32,10 +32,10 @@
 <body>
 
 <?php include "./parts/menu.php" ?>
-<ul id="cont">
+<div id="cont">
     <?php require_once("./parts/projets.php") ?>
-    <li id="channels"></li>
-    <li id="data">
+    <section id="channels"></section>
+    <section id="data">
         <div id="chat">
             <div id="showMessage"><?php
                 if(!$connected){
@@ -59,15 +59,15 @@
                 </div>
             </div>
         </div>
-    </li>
-    <li id="users">
+    </section>
+    <section id="users">
         <ul><?php if($connected){?>
             <h1 class="title" id="usersDisplay">Followed users <i class="fas fa-exchange-alt"></i></h1>
             <?php require_once("./parts/connected.php");
             }?>
         </ul>
-    </li>
-</ul>
+    </section>
+</div>
 </body>
 <script src="https://kit.fontawesome.com/78e483bd6f.js" crossorigin="anonymous"></script>
 <script src="js/utils/fonctionUtils.js" type="module"></script>

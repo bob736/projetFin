@@ -24,7 +24,7 @@ $adminFlag = false;
 
 ?>
 
-<li id="projet"><?
+<section id="projet"><?
     if(!empty($projets)){?>
         <h1 class="title">Projects</h1><?php
     }
@@ -66,7 +66,7 @@ $adminFlag = false;
         <script src="./js/utils/projectInfo.js" type="module"></script><?php
     }
     ?>
-</li>
+</section>
 <script src="./js/classes/Request.js" type="module"></script>
 <script src="./js/classes/Channel.js" type="module"></script>
 <script src="./js/classes/Users.js" type="module"></script>
