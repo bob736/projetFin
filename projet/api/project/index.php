@@ -22,10 +22,20 @@ if(isset($_GET, $_GET["id"], $_GET["ok"])){
     }
 }
 
+/**
+ * Accept project creation
+ * @param ProjetManager $manager
+ * @param int $id
+ */
 function acceptProject(ProjetManager $manager, int $id){
     $manager->acceptProject($id);
 }
 
+/**
+ * Refuse project creation
+ * @param ProjetManager $manager
+ * @param int $id
+ */
 function refuseProject(ProjetManager $manager, int $id){
     $manager->refuseProject($id);
 }

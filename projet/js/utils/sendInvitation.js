@@ -5,7 +5,6 @@ let links = document.getElementsByClassName("inviteToServer");
 
 for(let link of links){
     link.addEventListener("click", () => {
-        console.log("ok");
         let req = new Request("project/get.php", callback);
         req.resetLink();
         req.link += "?action=link&id=" + link.dataset.id;
@@ -13,6 +12,7 @@ for(let link of links){
     })
 }
 
+//Show the random token sent by the api
 function callback(data){
     let conv = new MessageAll();
     conv.parent.className = "convLink";

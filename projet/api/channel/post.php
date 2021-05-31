@@ -27,10 +27,24 @@ switch($requestType) {
         break;
 }
 
+
+/**
+ * Send message in a certain channel
+ * @param ChannelManager $manager
+ * @param string $message
+ * @param int $channel
+ */
 function sendChannelMessage(ChannelManager $manager, string $message, int $channel){
     $manager->sendMessage(sanitize($message), $channel);
 }
 
+
+/**
+ * Create a new project's channel in database
+ * @param ChannelManager $manager
+ * @param int $id
+ * @param string $name
+ */
 function newChannel(ChannelManager $manager, int $id, string $name){
     $manager->addChannel($id,sanitize($name));
 }

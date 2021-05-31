@@ -30,10 +30,23 @@ switch($requestType) {
         break;
 }
 
+/**
+ * Follow user
+ * @param UserManager $manager
+ * @param int $id$
+ */
 function followUser(UserManager $manager, int $id){
     $manager->followUser($id);
 }
 
+/**
+ * Update profile in database
+ * @param UserManager $manager
+ * @param int $id
+ * @param string $name
+ * @param string $bio
+ * @param string $link
+ */
 function modifProfile(UserManager $manager, int $id, string $name, string $bio, string $link){
     if($id === $_SESSION["user1_id"]){
         $manager->modifyUser(sanitize($name),sanitize($bio), sanitize($link));

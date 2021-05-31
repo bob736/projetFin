@@ -30,6 +30,7 @@ link.addEventListener("click", (e) => {
 
 function callback(){
     if(input.value.length > 0){
+        //If user havent already send a token
         if(!token){
             conv.showSingle({"pseudo": "user", "message": input.value, "date": getDate(), "sent" : "true"});
             token = true;

@@ -14,6 +14,7 @@ let displayTitle = document.getElementById("usersDisplay");
 let infos = document.getElementsByClassName("infoClick");
 let profileLinks = document.getElementsByClassName("profileLink");
 
+//Change title and ask information of the selected api
 displayTitle.addEventListener("click", () => {
     id += 1;
     if(id === 2){
@@ -34,12 +35,12 @@ displayTitle.addEventListener("click", () => {
     }
 })
 
-
+//Show user (channel's ones are followed ones)
 function callback(data){
-    console.log(data);
     let parent = document.getElementById("users");
     parent.innerHTML = '';
 
+    //Create user list
     let ul = document.createElement("ul");
     displayTitle.innerHTML = titles[id];
     ul.append(displayTitle);
@@ -57,10 +58,18 @@ function callback(data){
         ul.append(li);
     }
     parent.append(ul);
+
+    //Get
     let userList = document.getElementsByClassName("profile");
     profileLinks = document.getElementsByClassName("profileLink");
     infos = document.getElementsByClassName("infoClick");
 
+    //Set event on click on user's name
+    for(let user of userList){
+        user.addEventListener("click", () => showOption(user));
+    }
+
+    //Set event on profile icons to display them
     for(let link of profileLinks){
         link.addEventListener("click", function(e){
             e.preventDefault();
@@ -70,20 +79,20 @@ function callback(data){
         })
     }
 
-    resetDisplay();
 
-    for(let user of userList){
-        user.addEventListener("click", () => showOption(user));
-    }
+
+    resetDisplay();
 
 }
 
+//Set info's icons hidden
 function resetDisplay(){
     for (let info of infos){
         info.style.display = "none";
     }
 }
 
+//Show action icon
 function showOption(elem){
     let info = elem.getElementsByClassName("infoClick")[0];
     resetDisplay();

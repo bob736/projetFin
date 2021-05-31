@@ -24,6 +24,7 @@ const mutationObserver = new MutationObserver(callback)
 
 mutationObserver.observe(chat, { attributes: true })
 
+//Only show welcome message when user is connected
 if(connect === null){
     let help = new MessageAll();
     help.resetContent();

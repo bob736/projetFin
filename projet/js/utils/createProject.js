@@ -28,9 +28,10 @@ function callback(datas){
     //Create messages with already asked server's name
     let asks = [];
     for(let data of datas){
-        asks.push({"pseudo" : "server", "message" : "       Nom : " + data["name"], "date": getDate()});
+        asks.push({"pseudo" : "server", "message" : "Nom : " + data["name"], "date": getDate()});
     }
 
+    //Set event on createProject link to show a conversation between server and users to create a new project
     createProject.addEventListener("click", function(e){
         e.preventDefault();
         response = [];

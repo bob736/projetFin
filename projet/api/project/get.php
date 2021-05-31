@@ -48,6 +48,12 @@ switch($requestType) {
         break;
 }
 
+
+/**
+ * Check if user have already asked for a server creation. If so return project's name
+ * @param ProjetManager $manager
+ * @return false|string
+ */
 function hasAskForProject(ProjetManager $manager){
     $datas = $manager->hasAskForProjec();
     $return = [];
@@ -59,6 +65,13 @@ function hasAskForProject(ProjetManager $manager){
     return json_encode($return);
 }
 
+/**
+ * Return project's data
+ * @param UserManager $usermanager
+ * @param ProjetManager $manager
+ * @param int $id
+ * @return false|string
+ */
 function getProjetData(UserManager $usermanager, ProjetManager $manager, int $id){
     $project = $manager->getProjetById($id);
     $admission = $manager->getAdmissionById($id);
@@ -76,11 +89,23 @@ function getProjetData(UserManager $usermanager, ProjetManager $manager, int $id
     return json_encode($return);
 }
 
+/**
+ * Return a project's invitation token
+ * @param ProjetManager $manager
+ * @param int $id
+ * @return false|string
+ */
 function getLink(ProjetManager $manager, int $id){
     $link = $manager->getLink($id);
     return json_encode($link);
 }
 
+/**
+ * Check if token exist then add user to the corresponding project
+ * @param ProjetManager $manager
+ * @param string $link
+ * @return false|string
+ */
 function checkToken(ProjetManager $manager, string $link){
     $result = $manager->checkLink($link);
     if($result !== false){

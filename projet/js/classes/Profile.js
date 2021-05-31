@@ -27,7 +27,7 @@ Profile.prototype.show = function(){
             <h2>Bio</h2>
             <div id="userBio">${this.data.bio}</div>
             <hr class="profileSeparation">
-            <div id="userLink">Lien Github : <div>${this.data.lien}</div></div>
+            <div id="userLink">Pseudo github : <div>${this.data.lien}</div></div>
             
         </div>
     `

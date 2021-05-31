@@ -11,7 +11,10 @@ class PrivateMessageManager
 {
     use GlobalManager;
 
-    //Return all message between user2 and connected user
+    /**
+     * @param int $user2
+     * @return array
+     */
     public function getMessage(int $user2): array{
         $conn = $this->db->prepare("SELECT privatemessage.id as messageId, message, date, u.id as id, u.name as name1, u2.name as name2 FROM privatemessage INNER JOIN user as u ON privatemessage.user1_id = u.id INNER JOIN user as u2 ON privatemessage.user2_id = u2.id WHERE (privatemessage.user1_id = :id1 AND privatemessage.user2_id = :id2) OR (privatemessage.user2_id = :id1 AND privatemessage.user1_id = :id2) ORDER BY privatemessage.id ASC");
         $conn->bindValue(":id1", $_SESSION["user1_id"]);

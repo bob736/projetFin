@@ -22,7 +22,11 @@ switch($requestType) {
         break;
 }
 
-
+/**
+ * Send private message
+ * @param PrivateMessageManager $messageManager
+ * @param $data
+ */
 function sendPrivateMessage(PrivateMessageManager $messageManager, $data){
     $messageManager->sendMessage(sanitize($data->data),sanitize($data->message));
 }

@@ -41,8 +41,12 @@ switch($requestType) {
         break;
 }
 
-
-//Get all messages for a certain channel id from database
+/**
+ * Get all messages for a certain channel id from database
+ * @param ChannelManager $manager
+ * @param int $id
+ * @return false|string
+ */
 function getMessage(ChannelManager $manager, int $id){
     $messages = $manager->getMessageByChannelId($id);
     $return = [];
@@ -58,6 +62,12 @@ function getMessage(ChannelManager $manager, int $id){
     return json_encode($return);
 }
 
+/**
+ * Return Project's users
+ * @param ChannelManager $manager
+ * @param int $id
+ * @return false|string
+ */
 function getUsers(ChannelManager $manager, int $id){
     $users = $manager->getUsers($id);
     $return = [];
@@ -72,6 +82,12 @@ function getUsers(ChannelManager $manager, int $id){
     return json_encode($return);
 }
 
+/**
+ * Return Project's channels
+ * @param ChannelManager $manager
+ * @param int $id
+ * @return false|string
+ */
 function getChannels(ChannelManager $manager, int $id){
     return json_encode($manager->getChannels($id));
 }

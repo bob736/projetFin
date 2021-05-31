@@ -41,11 +41,23 @@ switch($requestType) {
         break;
 }
 
+/**
+ * Return user's name
+ * @param int $id
+ * @param UserManager $manager
+ * @return false|string
+ */
 function getUser(int $id, UserManager $manager) {
     $result = $manager->getUsernameById($id);
     return json_encode($result);
 }
 
+/**
+ * Return all of the user's info (used to display user's profile)
+ * @param int $id
+ * @param UserManager $manager
+ * @return false|string
+ */
 function getUserInfo(int $id, UserManager $manager){
     $result = $manager->getAllInfoById($id);
     $editable = "false";
@@ -65,6 +77,12 @@ function getUserInfo(int $id, UserManager $manager){
     return json_encode($user);
 }
 
+/**
+ * Return follow state (false or true)
+ * @param UserManager $manager
+ * @param int $id
+ * @return false|string
+ */
 function getFollow(UserManager $manager, int $id){
     return json_encode([
         "follow" => $manager->getFollow($id),
@@ -72,6 +90,11 @@ function getFollow(UserManager $manager, int $id){
     ]);
 }
 
+/**
+ * return session's user followed one
+ * @param UserManager $manager
+ * @return false|string
+ */
 function getFollowedUser(UserManager $manager){
     $users = $manager->getFollowedUser();
     $return = [];

@@ -17,6 +17,11 @@ class ChannelManager
 {
     use GlobalManager;
 
+    /**
+     * Return all message of a channel
+     * @param int $id
+     * @return array|false
+     */
     public function getMessageByChannelId(int $id){
         $conn = $this->db->prepare("SELECT * FROM message INNER JOIN channelmessages ON message.id = channelmessages.message_id INNER JOIN channel ON channel.id = channelmessages.channel_id WHERE channel.id = :id");
         $conn->bindValue(":id", $id);
@@ -49,6 +54,11 @@ class ChannelManager
         return false;
     }
 
+    /**
+     * Send a message in a channel
+     * @param string $message
+     * @param int $channel
+     */
     public function sendMessage(string $message, int $channel){
         $conn = $this->db->prepare("INSERT INTO message (message, date, user_id) VALUES (:message, :date, :user_id)");
         $conn->bindValue(":message", sanitize($message));
@@ -63,6 +73,11 @@ class ChannelManager
         $conn->execute();
     }
 
+    /**
+     * Get project's users
+     * @param int $id
+     * @return array
+     */
     public function getUsers(int $id){
         $conn = $this->db->prepare("SELECT * FROM projetuser INNER JOIN user ON projetuser.user_id = user.id WHERE projetuser.projet_id = :id");
         $conn->bindValue(":id", $id);
@@ -82,6 +97,11 @@ class ChannelManager
         }
     }
 
+    /**
+     * Add a channel to a project
+     * @param int $id
+     * @param string $name
+     */
     public function addChannel(int $id , string $name){
         $conn = $this->db->prepare("INSERT INTO channel (name, projet_id) VALUES (:name, :id)");
         $conn->bindValue(":name", $name);
@@ -89,6 +109,11 @@ class ChannelManager
         $conn->execute();
     }
 
+    /**
+     * Return Project's channel
+     * @param int $id
+     * @return array
+     */
     public function getChannels(int $id){
         $conn = $this->db->prepare("SELECT * FROM channel WHERE projet_id = :id");
         $conn->bindValue(":id", $id);

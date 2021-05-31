@@ -36,6 +36,11 @@ switch($requestType) {
         break;
 }
 
+/**
+ * Add a project to database
+ * @param ProjetManager $manager
+ * @param string $name
+ */
 function addProject(ProjetManager $manager, string $name = ""){
     $manager->addProject(sanitize($name),sanitize($name));
 }
@@ -44,16 +49,26 @@ function setProjectAdmin(ProjetManager $manager, int $id){
 
 }
 
+/**
+ * Ask to a superAdmin for server creation
+ * @param ProjetManager $manager
+ * @param array $data
+ */
 function askForProject(ProjetManager $manager, array $data){
     $projectName = $data[0];
     $message = $data[1];
     $manager->addProject(sanitize($projectName), sanitize($message));
 }
 
-function addUserToProject(ProjetManager $manager){
-
-}
-
+/**
+ * Delete project
+ * @param ProjetManager $manager
+ * @param int $id
+ */
 function deleteProject(ProjetManager $manager, int $id){
     $manager->deleteProject($id);
+}
+
+function addUserToProject(ProjetManager $manager){
+
 }
