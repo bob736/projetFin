@@ -87,4 +87,7 @@
 <script src="js/utils/deletProject.js" type="module"></script>
 <script src="js/utils/sendInvitation.js" type="module"></script>
 <script src="js/utils/askAdminProject.js" type="module"></script>
+<script src="js/utils/connexionChange.js"></script>
+<script src="js/utils/resetInput.js"></script>
+<script src="js/utils/showInput.js" type="module"></script>
 </html>

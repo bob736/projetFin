@@ -1,4 +1,5 @@
 <div id="form">
+    <h1 id="connectTitle">DISGIT</h1>
     <div class="formContent">
         <form action="./utils/connectFormCheck.php" method="post">
             <div>
@@ -9,6 +10,9 @@
             </div>
             <div>
                 <input class="buttonForm" type="submit" value="Connexion">
+            </div>
+            <div>
+                <span class="changeForm">INSCRIPTION</span>
             </div>
         </form>
     </div>
@@ -25,6 +29,9 @@
             </div>
             <div>
                 <input class="buttonForm" type="submit" value="Inscription">
+            </div>
+            <div>
+                <span class="changeForm">CONNEXION</span>
             </div>
         </form>
     </div>

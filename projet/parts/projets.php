@@ -36,19 +36,21 @@ $adminFlag = false;
             $admin = false;
         }?>
         <div class="projetCont" >
-        <h1 data-id="<?= $projet->getId() ?>"><?= $projet->getName()?><?php if($projet->getStat() === 0){?>
-                <i class="fas fa-question" data-stat = "<?php if(is_int($projet->getStat())){
-                    echo $projet->getStat();
-                } ?>" data-id="<?= $projet->getId() ?>"></i><?php
+        <h1 data-id="<?= $projet->getId() ?>"><?= $projet->getName()?>
+            </h1><?php if($projet->getStat() === 0){?>
+            <i class="fas fa-question" data-stat = "<?php if(is_int($projet->getStat())){
+                echo $projet->getStat();
+            } ?>" data-id="<?= $projet->getId() ?>"></i><?php
             }
             if($admin || $ask){?>
-                <i data-id="<?= $projet->getId() ?>" class="fas fa-link inviteToServer"></i>
+                <i data-id="<?= $projet->getId() ?>" class="fas fa-link inviteToServer"></i><?php
+            }
+            if($admin){?>
                 <i data-id="<?= $projet->getId() ?>" class="fas fa-plus addChannel"></i><?php
             }
             else{if(!$admin && !$ask){?>
-                <i data-id="<?= $projet->getId() ?>" class="fas fa-user-shield askForAdmin"></i><?php
-            }}?>
-            </h1><?php
+            <i data-id="<?= $projet->getId() ?>" class="fas fa-user-shield askForAdmin"></i><?php
+            }}
             if($ask){?>
             <i class="far fa-trash-alt delete"></i><?php
             }?>

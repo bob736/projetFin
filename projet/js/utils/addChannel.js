@@ -2,26 +2,29 @@ import {Request} from "../classes/Request.js";
 import {MessageAll} from "../classes/MessageAll.js";
 import {getDate} from "./fonctionUtils.js";
 
-let input = document.querySelector("input[type=text]");
+let input = document.getElementsByTagName("form")[0].querySelector("input[type=text]");
 
 let addChannel = document.getElementsByClassName("addChannel");
 let conv = new MessageAll();
 
 let id = false;
-let submitEvent = false;
 let alreadySend = false;
 
 for(let add of addChannel){
     add.addEventListener("click", () => {
+        alreadySend = false;
         //Get server's name
         let serverName = add.parentNode.innerText;
         let submit = document.querySelector("input[type=submit]");
 
         id = add.dataset.id;
 
+        //Reset chat
         conv.resetContent();
         conv.parent.className = "addChannelConv";
         conv.showSingle({"pseudo" : serverName, "message": "Nom du channel a ajouter ?", "date": getDate()});
+
+        //clone submit to delete all event on it
         let submitClone = submit.cloneNode(true);
         submit.parentNode.replaceChild(submitClone,submit);
         submitClone.addEventListener("click", callback.bind(event));
