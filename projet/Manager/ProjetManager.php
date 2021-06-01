@@ -7,6 +7,7 @@ use App\Traits\GlobalManager;
 use App\Entity\Projet;
 use App\Manager\UserManager;
 use App\Entity\Channel;
+use DateTime;
 
 class ProjetManager
 {
@@ -114,6 +115,10 @@ class ProjetManager
                             $channels[] = $channel;
                         }
                     }
+                    $conn = $this->db->prepare("SELECT verif, lastLink FROM projectLinkVerified WHERE projet_fk = :id");
+                    $conn->bindValue(":id", $select["id"]);
+                    $conn->execute();
+                    $link = $conn->fetch();
 
                     $conn = $this->db->prepare("SELECT statue, message FROM projetadmission WHERE projet_id = :id");
                     $conn->bindValue(":id", $select["id"]);
@@ -125,6 +130,8 @@ class ProjetManager
                             ->setName($select["name"])
                             ->setLink($select["link"])
                             ->setId($select["id"])
+                            ->setLinkVerif($link["verif"])
+                            ->setLastLink($link["lastLink"])
                             ->setChannels($channels);
                         $projets[] = $projet;
                     }
@@ -151,6 +158,11 @@ class ProjetManager
         $conn->execute();
 
         $id = $this->db->lastInsertId();
+
+        $conn = $this->db->prepare("INSERT INTO projectLinkVerified (projet_fk, verif) VALUES (:id, :verif)");
+        $conn->bindValue(":id", $id);
+        $conn->bindValue(":verif", "0");
+        $conn->execute();
 
         $conn = $this->db->prepare("INSERT INTO projetadmission (user_id, projet_id, message, statue) VALUES (:userid, :projetid, :message, :statue)");
         $conn->bindValue(":userid", $_SESSION["user1_id"]);
@@ -317,6 +329,11 @@ class ProjetManager
         }
     }
 
+    /**
+     * Add user to a project
+     * @param int $id
+     * @return bool
+     */
     public function addUserToProject(int $id){
         $conn = $this->db->prepare("SELECT user_id FROM projetuser WHERE projet_id = :id AND user_id = :iduser");
         $conn->bindValue(":id", $id);
@@ -336,6 +353,10 @@ class ProjetManager
         return false;
     }
 
+    /**
+     * Delet project
+     * @param int $id
+     */
     public function deleteProject(int $id){
         $conn = $this->db->prepare("DELETE FROM projet WHERE id = :id");
         $conn->bindValue(":id", $id);
@@ -345,6 +366,11 @@ class ProjetManager
     public function checkAsk(int $id){
     }
 
+    /**
+     * Return project link
+     * @param int $id
+     * @return mixed
+     */
     public function getProjectLink(int $id){
         $conn = $this->db->prepare("SELECT link FROM projet WHERE id = :id");
         $conn->bindValue(":id", $id);
@@ -352,5 +378,14 @@ class ProjetManager
         if($conn->execute()){
             return $conn->fetch();
         }
+    }
+
+    public function updateProjectLinkVerif(int $id, string $link, int $verif){
+        $conn = $this->db->prepare("UPDATE projectLinkVerified (verif, lastLink, lastVerif) VALUES (:verif, :link, :last) WHERE projet_fk = :id");
+        $conn->bindValue(":verif", $verif);
+        $conn->bindValue(":id", $id);
+        $conn->bindValue(":link", $link);
+        $conn->bindValue(":last", (new DateTime())->getTimestamp());
+        $conn->execute();
     }
 }

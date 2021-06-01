@@ -5,6 +5,7 @@ import {ChannelAll} from "../classes/ChannelAll.js";
 import {ChannelSingle} from "../classes/ChannelSingle.js";
 
 let reqProjectName = new Request("project/get.php", setProjectName);
+let perpage = 100;
 
 let events = [];
 let morePage = true
@@ -27,19 +28,28 @@ function setProjectName(data){
     next = true;
     while(morePage && next){
         let reqInfo = new Request("", callbackInfo);
-        reqInfo.get("https://api.github.com/repos/" + data.link + "/events?page=" + page);
+        reqInfo.get("https://api.github.com/repos/" + data.link + "/events?page=" + page + "&per_page="+ perpage);
         page ++;
         next = false;
     }
 
 }
 
+
 function callbackInfo(data){
-    console.log(data);
-    if(data === []){
+    for(let event of data){
+        events.push([event["type"], event["actor"]["login"], event["created_at"]]);
+    }
+    if(data === [] || events.length < perpage){
         morePage = false;
+
+        displayGraph(events);
     }
     else{
         next = true;
     }
+}
+
+function displayGraph(events){
+    console.log(events);
 }

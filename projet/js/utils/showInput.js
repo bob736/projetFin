@@ -1,4 +1,5 @@
 import {MessageAll} from "../classes/MessageAll.js";
+import {getDate} from "./fonctionUtils.js";
 
 let form = document.getElementById("sendMessage");
 let chat = document.getElementById("showMessage");
@@ -29,7 +30,7 @@ if(connect === null){
     let help = new MessageAll();
     help.resetContent();
     help.setFirstContent("<div id='sendTo'>Bienvenue</div>");
-    help.showSingle({"pseudo" : "server", "message": "Si vous avez besoin d'aide sur l'utilisation du site, veuillez clicker sur le bouton <i class='help fas fa-info-circle'></i> en haut a droite"})
+    help.showSingle({"pseudo" : "server", "message": "Si vous avez besoin d'aide sur l'utilisation du site, veuillez clicker sur le bouton <i class='help fas fa-info-circle'></i> en haut a droite","date": getDate()})
 }
 
 

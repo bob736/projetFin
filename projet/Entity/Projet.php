@@ -15,6 +15,8 @@ class Projet
     private ?string $link;
     private ?array $channels;
     private ?int $stat;
+    private ?string $linkVerif;
+    private ?string $lastLink;
 
     /**
      * Projet constructor.
@@ -32,6 +34,42 @@ class Projet
         $this->channels = $channels;
         $this->stat = $stat;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getLastLink(): ?string
+    {
+        return $this->lastLink;
+    }
+
+    /**
+     * @param string|null $lastLink
+     */
+    public function setLastLink(?string $lastLink): Projet
+    {
+        $this->lastLink = $lastLink;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLinkVerif(): ?string
+    {
+        return $this->linkVerif;
+    }
+
+    /**
+     * @param string|null $linkVerif
+     */
+    public function setLinkVerif(?string $linkVerif): Projet
+    {
+        $this->linkVerif = $linkVerif;
+        return $this;
+    }
+
+
 
     /**
      * @return int|null
